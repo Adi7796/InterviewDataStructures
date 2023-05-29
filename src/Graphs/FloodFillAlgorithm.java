@@ -32,22 +32,21 @@ public class FloodFillAlgorithm {
                 {1, 1, 1, 1, 1, 2, 1, 1},
                 {1, 1, 1, 1, 1, 2, 2, 1}};
 
-        int m = graph.length;
         int n = graph[0].length;
 
         int X=4, Y=4, newColor = 3;
         int prevColor = graph[X][Y];
-        floodFillBFS(graph, m, n, X, Y, newColor, prevColor);
+        floodFillBFS(graph, X, Y, newColor, prevColor);
 
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-                System.out.print(graph[i][j] + " ");
+        for (int[] ints : graph) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(ints[j] + " ");
             }
             System.out.println();
         }
     }
 
-    public static void floodFillBFS(int[][] graph, int m, int n, int X, int Y, int newColor, int prevColor)
+    public static void floodFillBFS(int[][] graph, int X, int Y, int newColor, int prevColor)
     {
         Cell node = new Cell(X, Y);
         Queue<Cell> queue = new LinkedList<>();
