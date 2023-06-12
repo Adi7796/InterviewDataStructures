@@ -1,4 +1,4 @@
-package BST;
+package Trees;
 
 public class CreateBinarySearchTree {
 
@@ -48,7 +48,7 @@ public class CreateBinarySearchTree {
         inorderTraversal(root);
     }
 
-    class Node{
+    static class Node{
         int data;
         Node left;
         Node right;
