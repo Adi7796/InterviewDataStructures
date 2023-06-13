@@ -1,7 +1,6 @@
 package Trees;
 import Trees.CreateBinarySearchTree.Node;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ViewsBinaryTree {
@@ -34,8 +33,9 @@ public class ViewsBinaryTree {
     {
         if(root == null)
             return;
-        if(map.get(level) == null)
-            map.put(level, root);
+
+        map.putIfAbsent(level, root);
+
         leftViewUtil(root.left, map, level +1);
         leftViewUtil(root.right, map, level +1);
     }
@@ -44,8 +44,8 @@ public class ViewsBinaryTree {
     {
         if(root == null)
             return;
-        if(map.get(level) == null)
-            map.put(level, root);
+
+        map.putIfAbsent(level, root);
 
         rightViewUtil(root.right, map, level +1);
         rightViewUtil(root.left, map, level + 1);
