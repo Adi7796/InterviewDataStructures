@@ -36,6 +36,35 @@ public class CreateBinarySearchTree {
         return node;
     }
 
+    public Node insertNodeIteratively(Node root, int nodeValue){
+        Node parent = null;
+        Node current = root;
+
+        while(current != null)
+        {
+            parent = current;
+            if(current.data < nodeValue)
+                current = current.right;
+            else if(current.data > nodeValue)
+                current = current.left;
+        }
+
+        if(parent == null)
+            return new Node(nodeValue);
+
+        if(parent.data > nodeValue)
+            parent.left = new Node(nodeValue);
+        else if(parent.data < nodeValue)
+            parent.right = new Node(nodeValue);
+
+        return root;
+    }
+
+    public Node deleteNode(Node root, int nodeValue)
+    {
+        return null;
+    }
+
     public void inorderTraversal(Node node){
         if(node != null){
             inorderTraversal(node.left);
