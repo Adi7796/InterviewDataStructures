@@ -31,7 +31,7 @@ public class FloorAndCeilBST {
         {
             if(root.data == key) return root.data;
 
-            else if(root.data > key){
+            else if(root.data > key){  // if the key is smaller than the root value then we need to move right to find the floor value
                 root = root.left;
             }
             else if(root.data < key){
@@ -51,7 +51,7 @@ public class FloorAndCeilBST {
         {
             if(root.data == key) return root.data;
 
-            else if(root.data < key) {
+            else if(root.data < key) { // if the key is greater than the root value then we need to move left to find the ceil value
                 root = root.right;
             }
 
