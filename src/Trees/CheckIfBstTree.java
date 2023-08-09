@@ -51,6 +51,7 @@ public class CheckIfBstTree {
     If the current root falls within that range for all the nodes, we can say the Tree is a BST
     We will update the max range with the Largest number of the left subtree
     and min range as the smallest number in the right subtree
+    Time Complexity : O(N)
      */
     public static boolean isBSTUsingRange(Node root, Integer minRange, Integer maxRange)
     {
