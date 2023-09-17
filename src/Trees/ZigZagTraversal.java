@@ -23,7 +23,7 @@ public class ZigZagTraversal {
 
         while(!curentLevel.isEmpty()){
             Node currentNode = curentLevel.pop();
-            System.out.println(currentNode.data);
+            System.out.print(currentNode.data +" ");
             if(leftToRight){
                 if(currentNode.left !=null)
                     nextLevel.push(currentNode.left);
