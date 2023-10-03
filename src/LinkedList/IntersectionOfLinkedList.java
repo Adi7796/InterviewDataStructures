@@ -45,9 +45,11 @@ public class IntersectionOfLinkedList {
     public static Node push(Node head, int data){
 
         //inserting data at the beginning of the list
+        /* Allocate node */
         Node newNode = new Node(data);
+        /* Link the old list of the new node */
         newNode.next = head;
-
+        /* Move the head to point to the new node */
         head = newNode;
         return head;
     }
@@ -55,23 +57,32 @@ public class IntersectionOfLinkedList {
     public static Node sortedIntersect(Node a, Node b)
     {
         Node result = new Node(0);
+        // storing the result pointet inside current so as to not lose track of head
+        // and use current to traverse the list
         Node current = result;
 
         while(a!=null && b!=null)
         {
+            /* Advance comparing the first
+         nodes in both lists.
+        When one or the other list runs
+         out, we're done. */
             if(a.data == b.data)
             {
+                /* found a node for the intersection */
                 current.next = new Node(a.data);
+                // move current forward only when there is a match
                 current = current.next;
 
                 a = a.next;
                 b = b.next;
             }
             else if(a.data < b.data)
-                a = a.next;
+                a = a.next;    /* advance the smaller list */
             else
                 b = b.next;
         }
+        // result's next points to the head as we used current to traverse the newly created linked list
         result = result.next;
         return result;
     }
