@@ -1,6 +1,6 @@
 package LinkedList;
 
-public class IntersectionOfLinkedList {
+public class IntersectionOfSortedLinkedList {
 
     static class Node{
         int data;
