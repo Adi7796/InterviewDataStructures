@@ -1,9 +1,6 @@
 package Greedy;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 
 /*
 In a stock market, there is a product with its infinite stocks.
@@ -35,14 +32,17 @@ public class MaximumNumberOfStocks {
             arr[i] = new Pair(price[i], i+1);
         }
 
-        Arrays.sort(arr, new Comparator<Pair>(){
-            public int compare(Pair p1, Pair p2){
-                return p1.cost - p2.cost;
-            }
-        });
+        Arrays.sort(arr, (p1, p2) -> p1.cost - p2.cost);
+        // similar to below without the use of lambdas
+
+//        Arrays.sort(arr, new Comparator<Pair>(){
+//            public int compare(Pair p1, Pair p2){
+//                return p1.cost - p2.cost;
+//            }
+//        });
 
         int total_purchase = 0;
-        int purchase = 0;
+        int purchase;
 
         for(int i=0;i<n;i++)
         {
