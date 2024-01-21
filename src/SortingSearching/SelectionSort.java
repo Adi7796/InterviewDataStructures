@@ -1,4 +1,4 @@
-package Arrays;
+package SortingSearching;
 
 public class SelectionSort {
 }
