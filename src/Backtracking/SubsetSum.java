@@ -26,9 +26,9 @@ public class SubsetSum {
             ans.add(sum);
             return;
         }
-
+        // We pick the current element and increase the sum
         calculateSum(arr, sum + arr.get(index),index +1 , ans);
-
+        // We don't pick the current element and keep the sum same
         calculateSum(arr, sum, index + 1, ans);
     }
 }

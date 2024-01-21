@@ -60,7 +60,7 @@ public class DoubleLinkedList {
             insertLast(newData);
             return;
         }
-        else if(head == null){   // new element data present to insertAfter
+        else if(head == null){   // no element data present to insertAfter
             return;
         }
 
