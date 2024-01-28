@@ -22,6 +22,7 @@ public class SearchInSortedMatrix {
 
         while(topBound <= bottomBound)
         {
+            // Checking if we can find the element at the first/last column of the current row for optimization
             if(arr[mid][0] == k){
                 System.out.println("Found the element at row : "+ (mid+1) + " col : "+ 1);
                 return;
@@ -32,11 +33,15 @@ public class SearchInSortedMatrix {
                 return;
             }
 
+            // if the element is greater than the first element on the current row and smaller than the last element on the current row
+            // we apply binary search on this row
             if(k > arr[mid][0] && k < arr[mid][M-1])
                 binarySearch(arr, N, M, k, mid);
 
+            // else we decrease the bottom bound
             if(k < arr[mid][0])
                 bottomBound = mid -1;
+            // or increase the topbound
             if(k > arr[mid][M-1])
                 topBound = mid + 1;
 
