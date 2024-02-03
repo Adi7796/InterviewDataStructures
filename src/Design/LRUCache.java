@@ -58,32 +58,32 @@ public class LRUCache {
     }
     public void get(int key)
     {
-        if(cacheMap.get(key) == null)
-            System.out.println(-1);
+        if(cacheMap.get(key) == null)   // if the node is not found inside the cache, that means we dont have the key in cache
+            System.out.println(-1);  // return -1 by default
         else{
-            Node node = cacheMap.get(key);
-            moveNodeToFirst(node);
-            System.out.println(node.value);
+            Node node = cacheMap.get(key);  // we get the node for the key asked
+            moveNodeToFirst(node); // move the node to first to make it most recently used
+            System.out.println(node.value);  // print the value
         }
     }
 
     public void put(int key, int value)
     {
         Node node = cacheMap.get(key);
-        if(node == null){
+        if(node == null){ // this means the node doesn't exist in the cache hence we need to directly insert it
             Node newNode = new Node(key, value);
-            if(cacheMap.size()==capacity)
+            if(cacheMap.size()==capacity)  // if the capacity is reached, we remove the least recently used node which is at the last of the linked list
             {
-                Node nodeToBeRemoved = tail.prev;
-                removeNode(nodeToBeRemoved);
-                cacheMap.remove(nodeToBeRemoved.key);
+                Node nodeToBeRemoved = tail.prev;  // the node to be removed is the last node, hence can be found by tail prev
+                removeNode(nodeToBeRemoved);  // remove last node
+                cacheMap.remove(nodeToBeRemoved.key); // remove this node from the map as well
             }
-            cacheMap.put(key, newNode);
-            addNodeToFirst(newNode);
+            cacheMap.put(key, newNode);  // put the new node into the map/cache
+            addNodeToFirst(newNode);  // move this node to the beginning of the DLL to make it most recently used
         }
-        else{
+        else{  // node exists in the cache, hence we need to update its value
             node.value = value;
-            moveNodeToFirst(node);
+            moveNodeToFirst(node);  // Moving the node to start to make it most recently used
         }
     }
     public static void main(String[] args)
