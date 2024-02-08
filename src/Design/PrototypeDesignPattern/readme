@@ -1,0 +1,5 @@
+This design pattern is used to copy an existing object rather than creating a new instance from scratch.
+This approach saves costly resources and time, especially when object creation is a heavy price
+Eg - creating a db connection, making a network call, reading a large sized file etc
+So we just execute this logic once and store it in an object
+thereafter we keep cloning this object and then use those objects. this saves time and resources
