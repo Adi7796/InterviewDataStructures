@@ -1,0 +1,3 @@
+the contract says :
+1) If 2 objects are equal, they must have same hashcode
+2) if 2 objects have the same hashcode, they may or may not be equal   --> as collision might occur between 2 objects
