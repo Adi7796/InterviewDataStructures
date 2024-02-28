@@ -5,6 +5,8 @@ Given that there are N books and M students. Also given are the number of pages 
 The task is to assign books in such a way that the maximum number of pages assigned to a student is minimum,
 with the condition that every student is assigned to read some consecutive books.
 Print that minimum number of pages.
+
+Logic explanation - https://takeuforward.org/arrays/painters-partition-problem/
  */
 public class BooksAllocation {
     public static void main(String[] args) {
@@ -50,3 +52,8 @@ public class BooksAllocation {
         return low;
     }
 }
+
+/*
+Time Complexity: O(N * log(sum(arr[])-max(arr[])+1)), where N = size of the array, sum(arr[]) = sum of all array elements, max(arr[]) = maximum of all array elements.
+Space Complexity:  O(1)
+ */
