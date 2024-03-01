@@ -1,23 +1,17 @@
 package SortingSearching;
 
-public class SelectionSort {
+public class BubbleSort {
     public static void main(String[] args) {
         int[] arr = {9, 5, 1, 4 ,3, -2, 100, 34, 50, -98, 1234, 44, 8};
         int n = arr.length;
 
         for(int i=0;i<n-1;i++)
         {
-            int minimum = arr[i];
-            int minimumIndex = i;
-            for(int j=i+1;j<n-1;j++)
+            for(int j=1;j<n;j++)
             {
-                if(arr[j] < minimum)
-                {
-                    minimum = arr[j];
-                    minimumIndex = j;
-                }
+                if(arr[j] < arr[j-1])
+                    swap(j, j-1, arr);
             }
-            swap(minimumIndex, i, arr);
         }
 
         for(int i : arr)
