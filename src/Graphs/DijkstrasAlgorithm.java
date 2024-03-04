@@ -1,8 +1,11 @@
 package Graphs;
 
+/*
+This algorithms is used to find the shortest path from source to all the vertices in a weighted graph
+ */
 
 /* Time Complexity: O(V2)
-        Auxiliary Space: O(V)  */
+ Auxiliary Space: O(V)  */
 
 public class DijkstrasAlgorithm {
 

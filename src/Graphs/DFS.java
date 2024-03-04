@@ -51,3 +51,7 @@ public class DFS {
         return traversalList;
     }
 }
+/*
+Time complexity: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+Auxiliary Space: O(V + E), since an extra visited array of size V is required, And stack size for iterative call to DFS function.
+ */

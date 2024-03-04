@@ -1,6 +1,5 @@
 package Graphs;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class DetectCycleUndirectedGraph {
@@ -8,7 +7,7 @@ public class DetectCycleUndirectedGraph {
         int v=7;
         LinkedList<LinkedList<Integer>> adjacencyList = new LinkedList<>();
         for(int i=0;i<v;i++){
-            adjacencyList.add(new LinkedList<Integer>());
+            adjacencyList.add(new LinkedList<>());
         }
         addEdge(0,1,adjacencyList);
         addEdge(1,2,adjacencyList);

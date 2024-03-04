@@ -20,7 +20,7 @@ public class NumberOfIslands {
             }
         }
 
-        System.out.println("No. of islands :"+ countIslands(graph,visited));
+        System.out.println("No. of islands : "+ countIslands(graph,visited));
     }
 
     public static boolean isSafe(int[][] graph, int rowNum, int colNum, boolean[][] visited)
