@@ -48,3 +48,7 @@ public class ArrayPermutations {
         }
     }
 }
+/*
+Time Complexity: O(N*N!) Note that there are N! permutations and it requires O(N) time to print a permutation.
+Auxiliary Space: O(r – l)
+ */

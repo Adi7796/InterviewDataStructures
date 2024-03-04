@@ -37,6 +37,7 @@ public class RatMaze {
 
         if(isSafe(maze,x,y,N))
         {
+            // if this cell has been visited already
            if(sol[x][y] == 1)
                return false;
 
@@ -71,3 +72,8 @@ public class RatMaze {
         }
     }
 }
+
+/*
+Time Complexity: O(2^(m*n)), because on every cell we have to try 2 different directions.
+Auxiliary Space: O(m*n), Maximum Depth of the recursion tree(auxiliary space).
+ */

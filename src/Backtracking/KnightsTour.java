@@ -61,3 +61,11 @@ public class KnightsTour {
         }
     }
 }
+
+/*
+Time Complexity :
+There are N2 Cells and for each, we have a maximum of 8 possible moves to choose from,
+so the worst running time is O(8N^2).
+
+Auxiliary Space: O(N2)
+ */

@@ -17,7 +17,7 @@ public class CombinationSum1 {
         //arr.add(2);
         //arr.add(4);
 
-        int sum = 7;
+        int sum = 12;
         ArrayList<ArrayList<Integer>> ans = combinationalSumUtil(arr, sum);
         System.out.println(ans);
 
@@ -55,3 +55,7 @@ public class CombinationSum1 {
         findNumbers(ans, arr, index+1, sum, temp);
     }
 }
+/*
+Time Complexity: O(k*(2^n)) where n is the size of array, and k is average length
+Auxiliary Space: O(k*x) where is x is number of possible combinations
+ */
