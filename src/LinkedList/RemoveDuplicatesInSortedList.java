@@ -45,6 +45,7 @@ public class RemoveDuplicatesInSortedList {
         node.next.next.next.next = new Node(20);
         node.next.next.next.next.next = new Node(22);
         node.next.next.next.next.next.next = new Node(22);
+        //node.next.next.next.next.next.next.next = new Node(12);
 
         removeDuplicates(node);
     }
