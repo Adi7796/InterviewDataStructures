@@ -1,5 +1,14 @@
 package Trees;
 import Trees.CreateBinarySearchTree.Node;
+
+/*
+Given a binary tree and target node. By giving the fire to the target node and fire starts to spread in a complete tree. The task is to print the sequence of the burning nodes of a binary tree.
+Rules for burning the nodes :
+
+Fire will spread constantly to the connected nodes only.
+Every node takes the same time to burn.
+A node burns only once.
+ */
 public class BurnATree {
 
     static class Depth

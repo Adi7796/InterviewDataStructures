@@ -3,7 +3,7 @@ import Trees.CreateBinarySearchTree.Node;
 public class LowestCommonAncestor {
     public static void main(String[] args) {
         CreateBinarySearchTree.Node root = HeightOfBinaryTree.createBinaryTree();
-        System.out.println("Lowest common ancestor of the the nodes 6 & 10 is : "+ findLowestCommonAncestor(root,6,10 ).data);
+        System.out.println("Lowest common ancestor of the the nodes & 10 is : "+ findLowestCommonAncestor(root,6,10 ).data);
         System.out.println("Lowest common ancestor of the the nodes 6 & 8 is : "+ findLowestCommonAncestor(root,6,8 ).data);
 
     }
