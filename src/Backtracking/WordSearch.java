@@ -46,11 +46,11 @@ public class WordSearch {
         // this is to prevent reusing of the same character
         board[row][col] = '!';
 
-        boolean top = searchNext(word, board, index +1, row, col -1);
+        boolean top = searchNext(word, board, index +1, row-1, col);
 
-        boolean right = searchNext(word, board,index +1, row + 1, col);
+        boolean right = searchNext(word, board,index +1, row, col+1);
 
-        boolean bottom = searchNext(word,board, index +1, row, col +1);
+        boolean bottom = searchNext(word,board, index +1, row+1, col );
 
         boolean left = searchNext(word, board, index +1, row, col -1);
 
