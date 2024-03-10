@@ -4,58 +4,67 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+Given an integer array nums, return all the triplets
+[nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not contain duplicate triplets.
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation:
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+ */
 public class ThreeSum {
     public static void main(String[] args) {
-        int[] arr = {50, 30, 10, 60, 20, 40, 90, 80, 10, 20, 40};
-        int targetSum = 100;
-        if(arr.length <3) return;
-        ArrayList<ArrayList<Integer>> resultList = find3Sum(arr, targetSum);
+        int[] arr = {-1,0,1,2,-1,-4};
+
+        List<List<Integer>> resultList = find3Sum(arr);
         resultList.forEach(System.out::println);
     }
 
-    public static ArrayList<ArrayList<Integer>> find3Sum(int arr[], int targetSum)
+    public static List<List<Integer>> find3Sum(int arr[])
     {
         Arrays.sort(arr);
-        ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
-        for(int i=0; i<=arr.length-2; i++)
+        int n = arr.length;
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for(int i=0;i<n;i++)
         {
             if(i!=0 && arr[i] == arr[i-1]) continue;
 
-            int twoSum = targetSum - arr[i];
-            ArrayList<ArrayList<Integer>> twoSumList = find2SumPair(arr, twoSum, i+1, arr.length -1);
-            for(ArrayList<Integer> list : twoSumList)
+            int j = i+1;
+            int k = n-1;
+
+            while(j<k)
             {
-                list.add(arr[i]);
-                resultList.add(list);
+                long sum = arr[i] + arr[j] + arr[k];
+                if(sum < 0){
+                    j++;
+                }
+                else if(sum > 0){
+                    k--;
+                }
+                else {
+                    List<Integer> subList = Arrays.asList(arr[i], arr[j], arr[k]);
+                    ans.add(subList);
+                    k--;
+                    j++;
+                    while(j<k && arr[j]== arr[j-1]) j++;
+                    while(j<k && arr[k] == arr[k+1]) k--;
+                }
             }
         }
-        return resultList;
-    }
-
-    public static ArrayList<ArrayList<Integer>> find2SumPair(int[] arr,
-                                                  int twoSum,
-                                                  int leftIndex,
-                                                  int rightIndex)
-    {
-        ArrayList<ArrayList<Integer>> subList = new ArrayList<>();
-        while(leftIndex < rightIndex)
-        {
-            if(arr[leftIndex] + arr[rightIndex] == twoSum){
-                ArrayList<Integer> list = new ArrayList<>();
-                list.add(arr[leftIndex]);
-                list.add(arr[rightIndex]);
-                subList.add(list);
-                leftIndex++;
-                rightIndex--;
-            }
-            else if(arr[leftIndex] + arr[rightIndex] < twoSum){
-                leftIndex++;
-            }
-            else if(arr[leftIndex] + arr[rightIndex] > twoSum){
-                rightIndex--;
-            }
-        }
-
-        return subList;
+        return ans;
     }
 }
+
+/*
+Time Complexity: O(NlogN)+O(N2), where N = size of the array.
+Reason: The pointer i, is running for approximately N times. And both the pointers
+j and k combined can run for approximately N times including the operation of skipping duplicates.
+So the total time complexity will be O(N2).
+ */
