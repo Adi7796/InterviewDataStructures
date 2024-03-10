@@ -1,6 +1,8 @@
 package Trees;
 import Trees.CreateBinarySearchTree.Node;
 
+import java.util.HashMap;
+
 /*
 Given a binary tree and target node.
 By giving the fire to the target node and fire starts to spread in a complete tree.
@@ -60,4 +62,5 @@ public class BurnATree {
 
         return Math.max(leftHeight, rightHeight) +1;
     }
+
 }
