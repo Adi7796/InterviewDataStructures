@@ -1,0 +1,4 @@
+Bridge pattern decouple an abstraction from its implementation so that the two can vary independently.
+It is used mainly for implementing platform independence features.
+
+https://www.geeksforgeeks.org/bridge-design-pattern/

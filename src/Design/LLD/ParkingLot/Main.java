@@ -16,9 +16,9 @@ public class Main {
         Map<ParkingSlotType, Map<String, ParkingSlot>> allSlots = new HashMap<>();
 
         Map<String, ParkingSlot> compactSlots = new HashMap<>();
-//        compactSlots.put("P1", new ParkingSlot("P1", true, ParkingSlotType.COMPACT));
-//        compactSlots.put("P2", new ParkingSlot("P2", true, ParkingSlotType.COMPACT));
-//        compactSlots.put("P3", new ParkingSlot("P3", true, ParkingSlotType.COMPACT));
+        compactSlots.put("P1", new ParkingSlot("P1", true, ParkingSlotType.COMPACT));
+        compactSlots.put("P2", new ParkingSlot("P2", true, ParkingSlotType.COMPACT));
+        compactSlots.put("P3", new ParkingSlot("P3", true, ParkingSlotType.COMPACT));
 
         Map<String, ParkingSlot> mediumSlots = new HashMap<>();
         mediumSlots.put("P1", new ParkingSlot("P1", true, ParkingSlotType.MEDIUM));
