@@ -57,7 +57,7 @@ public class IntersectionOfSortedLinkedList {
     public static Node sortedIntersect(Node a, Node b)
     {
         Node result = new Node(0);
-        // storing the result pointet inside current so as to not lose track of head
+        // storing the result pointer inside current so as to not lose track of head
         // and use current to traverse the list
         Node current = result;
 

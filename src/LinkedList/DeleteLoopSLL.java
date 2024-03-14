@@ -1,5 +1,8 @@
 package LinkedList;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DeleteLoopSLL {
 
     static class Node{
@@ -31,6 +34,8 @@ public class DeleteLoopSLL {
     }
 
     public static int detectAndRemoveLoop(Node head){
+
+
         Node slow = head, fast = head;
         while(slow.next != null && fast!=null && fast.next!=null)
         {
