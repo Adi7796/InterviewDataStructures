@@ -6,11 +6,13 @@ public class Seat {
     int seatNumber;
     String rowId;
     SeatCategory seatCategory;
+    int price;
 
-    public Seat(int seatNumber, String rowId, SeatCategory seatCategory) {
+    public Seat(int seatNumber, String rowId, SeatCategory seatCategory, int price) {
         this.seatNumber = seatNumber;
         this.rowId = rowId;
         this.seatCategory = seatCategory;
+        this.price = price;
     }
 
     public int getSeatNumber() {
@@ -35,5 +37,12 @@ public class Seat {
 
     public void setSeatCategory(SeatCategory seatCategory) {
         this.seatCategory = seatCategory;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

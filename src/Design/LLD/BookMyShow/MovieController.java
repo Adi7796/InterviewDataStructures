@@ -3,12 +3,19 @@ package Design.LLD.BookMyShow;
 import Design.LLD.BookMyShow.Enums.City;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MovieController {
     Map<City, List<Movie>> cityVsMoviesMap;
     List<Movie> allMoviesList;
+
+    public MovieController()
+    {
+        cityVsMoviesMap = new HashMap<>();
+        allMoviesList = new ArrayList<>();
+    }
 
     public Map<City, List<Movie>> getCityVsMoviesMap() {
         return cityVsMoviesMap;
