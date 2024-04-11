@@ -35,9 +35,12 @@ public class User {
         private String userName;
         private String emailId;
 
-        public UserBuilder setUserId(int userId) {
+
+        // using this constructor to make the userID field mandatory
+        // while creating the User Object
+        // rest all fields are optional
+        public UserBuilder(int userId){
             this.userId = userId;
-            return this;
         }
 
         public UserBuilder setUserName(String userName) {
