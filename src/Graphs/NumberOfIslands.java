@@ -8,10 +8,10 @@ public class NumberOfIslands {
     public static void main(String[] args)
     {
         int[][] graph = new int[][] { { 1, 1, 0, 0, 0 },
-            { 0, 1, 0, 0, 1 },
-            { 1, 0, 0, 1, 1 },
-            { 0, 0, 0, 0, 0 },
-            { 1, 0, 1, 0, 1 } };
+                                      { 0, 1, 0, 0, 1 },
+                                      { 1, 0, 0, 1, 1 },
+                                      { 0, 0, 0, 0, 0 },
+                                      { 1, 0, 1, 0, 1 } };
 
         boolean[][] visited = new boolean[ROW][COL];
         for(int i=0;i<ROW;i++){

@@ -1,5 +1,10 @@
 package SortingSearching;
 
+/*
+Selection sort is a simple and efficient sorting algorithm that works by repeatedly
+selecting the smallest (or largest) element from the unsorted portion of the list
+and moving it to the sorted portion of the list.
+ */
 public class SelectionSort {
     public static void main(String[] args) {
         int[] arr = {9, 5, 1, 4 ,3, -2, 100, 34, 50, -98, 1234, 44, 8};

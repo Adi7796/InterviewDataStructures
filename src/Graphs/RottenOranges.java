@@ -104,7 +104,7 @@ public class RottenOranges {
                     queue.add(new Node(row, col-1));
                 }
             }
-            // Pop the delimite
+            // Pop the delimiter
             queue.remove();
 
             // If oranges were rotten in current frame than
