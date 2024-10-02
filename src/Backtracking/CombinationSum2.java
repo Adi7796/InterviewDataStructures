@@ -1,8 +1,6 @@
 package Backtracking;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 /*
 Given an array of positive integers arr[] and an integer x,
@@ -11,46 +9,37 @@ The same number cannot be chosen again from arr[].
  */
 public class CombinationSum2 {
     public static void main(String[] args) {
-        ArrayList<Integer> arr = new ArrayList<>();
-        arr.add(2);
-        arr.add(5);
-        arr.add(2);
-        //arr.add(8);
-        arr.add(1);
-        //arr.add(4);
-        arr.add(2);
-        int sum = 5;
-        ArrayList<ArrayList<Integer>> ans = combinationalSumUtil(arr, sum);
-        System.out.println(ans);
-    }
+        int[] arr= {10, 1, 2, 7, 6, 1, 5};
+        int sum = 8;
 
-    public static ArrayList<ArrayList<Integer>> combinationalSumUtil(ArrayList<Integer> arr, int sum){
-        HashSet<Integer> set = new HashSet<>();
-        ArrayList<Integer> temp = new ArrayList<>();
-        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
-
-        findNumbers(ans, arr, 0, sum, temp, set);
-        return ans;
-    }
-
-    public static void findNumbers(ArrayList<ArrayList<Integer>> ans,
-                                   ArrayList<Integer> arr, int index, int sum, ArrayList<Integer> temp, HashSet set)
-    {
-        if(index == arr.size()){
-            if(sum == 0){
-                ans.add(new ArrayList<>(temp));
-            }
-        }
-
-        if(arr.get(index) <= sum && !set.contains(index))
+        Arrays.sort(arr);
+        List<List<Integer>> ans = new ArrayList<>();
+        combinationalSumUtil(arr, sum, 0, ans, new ArrayList<>());
+        for(List<Integer> list : ans)
         {
-            temp.add(arr.get(index));
-            set.add(index);
-            findNumbers(ans, arr, index, sum - arr.get(index), temp, set);
-            temp.remove(temp.size()-1);
-            set.remove(index);
+            System.out.println(list);
+        }
+    }
+
+    public static void combinationalSumUtil(int[] arr, int target, int index, List<List<Integer>> ans,
+                                            List<Integer> subList){
+        if(target == 0)
+        {
+            ans.add(new ArrayList<>(subList));
+            return;
         }
 
-        findNumbers(ans, arr, index+1, sum, temp, set);
+        for(int i = index; i < arr.length; i++)
+        {
+            if(i > index && arr[i-1] == arr[i]) continue;
+
+            if(arr[i] > target) break;
+
+            subList.add(arr[i]);
+            combinationalSumUtil(arr, target - arr[i], i + 1, ans, subList);
+            subList.remove(subList.size()-1);
+        }
     }
+
+
 }
