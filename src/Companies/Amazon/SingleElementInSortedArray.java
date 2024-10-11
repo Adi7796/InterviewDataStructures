@@ -57,4 +57,6 @@ public class SingleElementInSortedArray {
         }
         return nums[lo];
     }
+
+    // Time complexity : O(logN)
 }
