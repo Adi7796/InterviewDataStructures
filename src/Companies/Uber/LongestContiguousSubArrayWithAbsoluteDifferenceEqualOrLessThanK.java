@@ -3,7 +3,7 @@ package Companies.Uber;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class LongestContiguousSubArrayWithSumEqualOrLessThanK {
+public class LongestContiguousSubArrayWithAbsoluteDifferenceEqualOrLessThanK {
     public static void main(String[] args) {
         int[] nums = {10,1,2,4,7,2};
         int limit = 5;
