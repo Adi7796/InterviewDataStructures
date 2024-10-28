@@ -1,11 +1,14 @@
 package Companies.Amazon;
 
 /*
-There are a row of n houses, each house can be painted with one of the k colors. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.
+There are a row of n houses, each house can be painted with one of the k colors.
+The cost of painting each house with a certain color is different.
+You have to paint all the houses such that no two adjacent houses have the same color.
 
 The cost of painting each house with a certain color is represented by an n x k cost matrix costs.
 
-For example, costs[0][0] is the cost of painting house 0 with color 0; costs[1][2] is the cost of painting house 1 with color 2, and so on...
+For example, costs[0][0] is the cost of painting house 0 with color 0; costs[1][2]
+is the cost of painting house 1 with color 2, and so on...
 Return the minimum cost to paint all houses.
 
 Example 1:
@@ -73,7 +76,7 @@ public class PaintHouse2 {
                 }
 
 
-                // nned to keep track of the new least and new second least for the houses i>=1
+                // need to keep track of the new least and new second least for the houses i>=1
                 if(dp[i][j] <= newLeast)
                 {
                     newSecondLeast = newLeast;

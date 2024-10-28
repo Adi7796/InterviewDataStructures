@@ -43,16 +43,14 @@ public class PaintHouse {
 
         for(int i = 1; i<n; i++)
         {
-            for(int j = 0; j< 3; j++)
-            {
-                // the min cost of painting the current house with red is
-                // cost of painting it with red + min of the costs of painting the prev house with either green or blue
-                dp[i][0] = costs[i][0] + Math.min(dp[i-1][1], dp[i-1][2]);
-                // cost of painting it with blue + min of the costs of painting the prev house with either red or green
-                dp[i][1] = costs[i][1] + Math.min(dp[i-1][0], dp[i-1][2]);
-                // cost of painting it with green + min of the costs of painting the prev house with either red or blue
-                dp[i][2] = costs[i][2] + Math.min(dp[i-1][0], dp[i-1][1]);
-            }
+            // the min cost of painting the current house with red is
+            // cost of painting it with red + min of the costs of painting the prev house with either green or blue
+            dp[i][0] = costs[i][0] + Math.min(dp[i-1][1], dp[i-1][2]);
+            // cost of painting it with blue + min of the costs of painting the prev house with either red or green
+            dp[i][1] = costs[i][1] + Math.min(dp[i-1][0], dp[i-1][2]);
+            // cost of painting it with green + min of the costs of painting the prev house with either red or blue
+            dp[i][2] = costs[i][2] + Math.min(dp[i-1][0], dp[i-1][1]);
+
         }
 
         return Math.min(dp[n-1][0], Math.min(dp[n-1][1], dp[n-1][2]));

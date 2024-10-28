@@ -38,7 +38,7 @@ thus the overall time will be greater than or equal to that of the speed n.
 public class KokoEatingBananas {
     public static void main(String[] args) {
         int[] piles = {30,11,23,4,20};
-        int h = 5;
+        int h = 6;
 
         System.out.println(minEatingSpeed(piles, h));
     }
