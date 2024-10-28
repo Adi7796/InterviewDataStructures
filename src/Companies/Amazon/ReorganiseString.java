@@ -4,6 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+/*
+Given a string s, rearrange the characters of s so that any two adjacent characters are not the same.
+
+Return any possible rearrangement of s or return "" if not possible.
+
+Example 1:
+
+Input: s = "aab"
+Output: "aba"
+Example 2:
+
+Input: s = "aaab"
+Output: ""
+ */
 public class ReorganiseString {
 
     static class Node implements Comparable<Node>{
@@ -25,7 +39,7 @@ public class ReorganiseString {
 
     }
     public static void main(String[] args) {
-        String s = "zhmyo";
+        String s = "aaabb";
         System.out.println("Reorganised String : " + reorganiseString(s));
     }
 
