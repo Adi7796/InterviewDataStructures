@@ -1,4 +1,4 @@
-package Design.DesignPatterns.Behavioral.ChainOfResponsibility;
+package Design.DesignPatterns.Behavioral.ChainOfResponsibilityPattern;
 
 public class DriverClass {
     public static void main(String[] args) {
