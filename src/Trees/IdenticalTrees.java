@@ -23,6 +23,20 @@ public class IdenticalTrees {
         }
         return false;
     }
+
+    public static boolean isIdenticalAlternative(Node p, Node q)
+    {
+        if((p == null && q != null) || (q==null && p!=null))
+            return false;
+
+        if(p != null && q != null && p.data != q.data)
+            return false;
+
+        if(p != null && q != null && p.data == q.data)
+            return isIdenticalAlternative(p.left, q.left) && isIdenticalAlternative(p.right, q.right);
+
+        return true;
+    }
     public static void main(String[] args) {
         Node root1 = new Node(1);
         root1.left = new Node(2);
