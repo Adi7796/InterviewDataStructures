@@ -24,6 +24,28 @@ public class DijkstrasAlgorithmPriorityQueue {
             return this.dist - pair.dist;
         }
     }
+    class Node implements Comparable<Node>
+    {
+        int v;
+        int wt;
+
+        Node(int v, int wt)
+        {
+            this.v = v;
+            this.wt = wt;
+        }
+
+        public int compareTo(Node node){ return this.wt - node.wt; }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "v=" + v +
+                    ", wt=" + wt +
+                    '}';
+        }
+    }
+
     public static void main(String[] args)
     {
         ArrayList<ArrayList<Pair>> adjacencyList= new ArrayList<>();
