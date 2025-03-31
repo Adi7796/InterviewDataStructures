@@ -2,42 +2,37 @@ package DynamicProgramming;
 
 import java.util.Arrays;
 
-public class LongestCommonSubsequence {
+/*
+Given two strings word1 and word2,
+return the minimum number of steps required to make word1 and word2 the same.
+
+In one step, you can delete exactly one character in either string.
+
+Example 1:
+
+Input: word1 = "sea", word2 = "eat"
+Output: 2
+Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+Example 2:
+
+Input: word1 = "leetcode", word2 = "etco"
+Output: 4
+ */
+public class DeleteOperationForTwoStrings {
+
     public static void main(String[] args) {
-        String str2 = "AGGTAB";
-        String str1 = "GXTXAYB";
+        System.out.println(minDistance("leetcode", "etco"));
+    }
+    public static int minDistance(String word1, String word2) {
+        int n = word1.length();
+        int m = word2.length();
 
-        System.out.println("Max length of the common subsequence : "+ findMaxLength(str1, str2));
+        int lcsLen = longestCommonSubsequence(word1, word2);
+
+        return n+m - (2*lcsLen);
     }
 
-    public static int findMaxLength(String str1, String str2){
-
-        int n = str1.length();
-        int m = str2.length();
-        int[][] dp = new int[n+1][m+1];
-
-        for(int i=0;i<=n;i++)
-        {
-            for(int j=0;j<=m;j++)
-            {
-                if(i==0 || j==0)
-                    dp[i][j] = 0;
-
-                else if(str1.charAt(i-1) == str2.charAt(j-1)){
-                    dp[i][j] = dp[i-1][j-1] + 1;
-                }
-
-                else if(str1.charAt(i-1) != str2.charAt(j-1)){
-                    dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
-                }
-            }
-        }
-
-        return dp[n][m];
-    }
-
-    // leet code implementation
-    public int longestCommonSubsequence(String s1, String s2) {
+    static int longestCommonSubsequence(String s1, String s2) {
         int n = s1.length();
         int m = s2.length();
 

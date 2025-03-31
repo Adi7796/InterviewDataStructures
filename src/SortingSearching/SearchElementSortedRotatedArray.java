@@ -27,8 +27,8 @@ public class SearchElementSortedRotatedArray {
             if(arr[mid] == key) return mid;
 
             // checking if the left sub array is sorted
-            // if sorted the mid-1 element should be greater than the low element
-            else if(arr[low] < arr[mid-1])
+            // if sorted the mid element should be greater than the low element
+            else if(arr[low] <= arr[mid])
             {
                 // checking if the key lies in the range of low and mid
                 // if yes we shorten our searching range to low and mid 1
