@@ -52,23 +52,34 @@ public class DetectCycleDirectedGraph {
 
     public static boolean isCyclePresent(int v, boolean[] visited, boolean[] recursiveStack,LinkedList<LinkedList<Integer>> adjacencyList)
     {
-        if(recursiveStack[v])
-            return true;
-
-        if(visited[v])
-            return false;
-
-        visited[v] = true;
+        // first mark both the vis and recStack as true
         recursiveStack[v] = true;
+        visited[v] = true;
 
+        // iterate over all the adj nodes of the vertex v
         for(Integer i : adjacencyList.get(v))
         {
-            if(isCyclePresent(i, visited, recursiveStack, adjacencyList))
+            // if the adj node is not visited, call the dfs function again on the adj node
+            if(!visited[i]){
+                if(isCyclePresent(i, visited, recursiveStack, adjacencyList)) return true;
+            }
+            // if the adjnode is visited, check if we have seen this node in the same recursive call
+            // if we have, that means we are visiting this vertex again in the same recursive call and hence cycle is present
+            else if(recursiveStack[i]){
                 return true;
+            }
         }
-
+        // backtrack and mark this node as not false in the recStack
         recursiveStack[v] = false;
+        // return false as we didn't find any cycle
         return false;
     }
 
 }
+
+/*
+Time Complexity: O(V + E), since in its whole, it is a DFS implementation, V – vertices; E – edges;
+
+Space Complexity: O(V), because, apart from the graph,
+we have 2 arrays of size V, to store the required information
+ */
