@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/*
+Kruskal's algorithm is used to find the Minimum Spanning Tree (MST)
+of a connected, undirected, weighted graph.
+
+Purpose:
+To connect all vertices in the graph with the minimum total edge weight, without any cycles.
+ */
 public class KruskalsAlgorithm {
     List<Edge> edgeList;
     int V, E;

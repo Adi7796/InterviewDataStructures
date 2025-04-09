@@ -2,6 +2,7 @@ package Graphs;
 
 /*
 This algorithms is used to find the shortest path from source to all the vertices in a weighted graph
+Works for both directed and undirected graphs as long all edge weights are non-negative
  */
 
 /* Time Complexity: O(V2)
