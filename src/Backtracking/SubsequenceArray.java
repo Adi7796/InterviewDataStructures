@@ -11,15 +11,18 @@ public class SubsequenceArray {
 
     public void subsequence(int[] arr, int index, ArrayList<Integer> path){
         if(index == arr.length){
-            if(path.size() > 0)
+            if(path.size() > 0) {
                 System.out.println(path);
+            }
+            return;
         }
-        else{
-            subsequence(arr, index +1, path);
-            path.add(arr[index]);
-            subsequence(arr, index + 1, path);
-            path.remove(path.size() -1);
-        }
-        return;
+        path.add(arr[index]);
+        subsequence(arr, index +1, path); // take
+        path.remove(path.size() -1);
+        subsequence(arr, index + 1, path);  // not take
     }
 }
+
+/*
+time complexity - 2^n * n
+ */

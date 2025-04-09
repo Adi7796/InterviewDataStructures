@@ -1,6 +1,5 @@
 package Backtracking;
 
-import java.util.Arrays;
 
 public class RatMaze {
     public static void main(String[] args) {

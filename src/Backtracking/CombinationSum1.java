@@ -57,5 +57,9 @@ public class CombinationSum1 {
 }
 /*
 Time Complexity: O(k*(2^n)) where n is the size of array, and k is average length
+Reason: Assume if all the elements in the array are unique then the no.
+of subsequence you will get will be O(2^n). we also add the ds to our ans when
+we reach the base case that will take “k”//average space for the ds.
+
 Auxiliary Space: O(k*x) where is x is number of possible combinations
  */
