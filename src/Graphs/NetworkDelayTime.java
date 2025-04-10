@@ -77,13 +77,11 @@ public class NetworkDelayTime {
 
         dist[k-1] = 0;
         pq.add(new Node(k, 0));
-        //int maxTime = Integer.MIN_VALUE;
 
         while(!pq.isEmpty())
         {
             Node node = pq.remove();
             int v = node.v;
-            int wt = node.wt;
 
             //maxTime = Math.max(maxTime, dist[v-1]);
             List<Node> list = adjMap.get(v);
