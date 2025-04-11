@@ -28,7 +28,7 @@ Explanation: The endWord "cog" is not in wordList, therefore there is no valid t
  */
 public class WordLadder {
 
-    class Pair{
+    static class Pair{
         String word;
         int steps;
 
@@ -40,10 +40,11 @@ public class WordLadder {
     }
     public static void main(String[] args)
     {
-
+        List<String> wordsList = List.of("hot","dot","dog","lot","log","cog");
+        System.out.println(ladderLength("hit", "cog", wordsList));
     }
 
-    public int ladderLength(String beginWord, String endWord, List<String> wordList)
+    public static int ladderLength(String beginWord, String endWord, List<String> wordList)
     {
         Set<String> wordsSet = new HashSet<>();
         Queue<Pair> queue = new LinkedList<>();
