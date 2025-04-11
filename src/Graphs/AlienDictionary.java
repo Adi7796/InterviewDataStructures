@@ -31,6 +31,9 @@ Input: words = ["z","x","z"]
 Output: ""
 Explanation: The order is invalid, so return "".
 
+Steps -
+1) Reduce the problem to a directed graph with in-degree vertices data structure
+2) once done, apply toposort on the char vertices to find the correct order of characters
  */
 public class AlienDictionary {
 
@@ -43,7 +46,9 @@ public class AlienDictionary {
 
     public String alienOrder(String[] words) {
 
+        // Need this map to keep track of all the neighbour chars of each char
         HashMap<Character, HashSet<Character>> graph = new HashMap<>();
+        // to keep track of the indegree's of all the chars
         HashMap<Character, Integer> inDegreeMap = new HashMap<>();
 
         for(int i = 0; i<words.length; i++)
@@ -60,6 +65,9 @@ public class AlienDictionary {
             String s1 = words[i];
             String s2 = words[i+1];
 
+            // edge case when no ordering is possible
+            // when the word occurring before is greater in length than the 2nd word
+            // and the 2nd word is a prefix of the first word, eg - abcd & abc
             if(s1.length() > s2.length() && s1.startsWith(s2)) return "";
 
             int len = Math.min(s1.length(), s2.length());
@@ -67,6 +75,7 @@ public class AlienDictionary {
             {
                 char c1 = s1.charAt(j);
                 char c2 = s2.charAt(j);
+                // place of first mismatch of characters
                 if(c1 != c2)
                 {
                     HashSet<Character> set = new HashSet<>();
@@ -107,9 +116,12 @@ public class AlienDictionary {
             sb.append(ch);
             count++;
             if (graph.containsKey(ch)) {
+                // get the neighbour set of the current char
                 HashSet<Character> nbrSet = graph.get(ch);
+                // traverse over all the neighbour char and decrement their in degree
                 for (char nbr : nbrSet) {
                     inDegreeMap.put(nbr, inDegreeMap.get(nbr) - 1);
+                    // enqueue if any char has indegree = 0
                     if (inDegreeMap.get(nbr) == 0) {
                         queue.add(nbr);
                     }
@@ -122,14 +134,14 @@ public class AlienDictionary {
 }
 
 /*
-Time complexity : O(C).
+Time Complexity: O(N*len)+O(K+E), where N is the number of words in the dictionary,
+‘len’ is the length up to the index where the first inequality occurs, K = no. of nodes, and E = no. of edges.
+N*len - for words array and word traversal
+K+E - for toposort using BFS
 
-There were three parts to the algorithm; identifying all the relations,
-putting them into an adjacency list,
-and then converting it into a valid alphabet ordering.
-
-In the worst case, the first and second parts require checking every letter of every word
-(if the difference between two words was always in the last letter). This is O(C).
+Space Complexity: O(K) + O(K)+O(K)+O(K) ~ O(4K), O(K) for the indegree array,
+and O(K) for the queue data structure used in BFS(where K = no.of nodes), O(K)
+for the answer array and O(K) for the adjacency list used in the algorithm.
 
 For the third part, recall that a breadth-first search has a cost of O(V+E)
  */

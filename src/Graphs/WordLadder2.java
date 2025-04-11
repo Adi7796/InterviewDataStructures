@@ -13,6 +13,18 @@ sk == endWord
 Given two words, beginWord and endWord, and a dictionary wordList, return all the
 shortest transformation sequences from beginWord to endWord, or an empty list if no such sequence exists.
 Each sequence should be returned as a list of the words [beginWord, s1, s2, ..., sk].
+
+Example 1:
+Input: beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log","cog"]
+Output: [["hit","hot","dot","dog","cog"],["hit","hot","lot","log","cog"]]
+Explanation: There are 2 shortest transformation sequences:
+"hit" -> "hot" -> "dot" -> "dog" -> "cog"
+"hit" -> "hot" -> "lot" -> "log" -> "cog"
+Example 2:
+
+Input: beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log"]
+Output: []
+Explanation: The endWord "cog" is not in wordList, therefore there is no valid transformation sequence.
  */
 public class WordLadder2 {
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
