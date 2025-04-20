@@ -66,12 +66,12 @@ public class NumberOfOperationsToMakeNetworkConnected {
             }
         }
 
-        // no of connected components = no. of times one of the a vertex is itself's parent
+        // no of connected components = no. of times one of the vertex is itself's parent
         for(int i = 0; i< n; i++){
             if(parent[i] == i) noConnComp++;
         }
 
-        // we would required no of connected components - 1 edges to connect all the components
+        // we would require no of connected components - 1 edges to connect all the components
         int ans = noConnComp -1;
 
         // we need to remove one of the extra edges to make an edge between the un-connected components

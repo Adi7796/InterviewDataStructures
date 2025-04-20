@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /*
-You are given an empty 2D binary grid grid of size m x n.
+You are given an empty 2D binary grid of size m x n.
 The grid represents a map where 0's represent water and 1's represent land.
 Initially, all the cells of grid are water cells (i.e., all the cells are 0's).
 
@@ -138,3 +138,12 @@ public class NumberOfIslands_II {
         return row >= 0 && row < n && col >= 0 && col < m;
     }
 }
+
+/*
+Time Complexity: O(Q*4α) ~ O(Q) where Q = no. of queries.
+The term 4α is so small that it can be considered constant.
+
+Space Complexity: O(Q) + O(N*M) + O(N*M), where Q = no. of queries, N = total no. of rows, M = total no. of columns.
+The last two terms are for the parent and the size array used inside the Disjoint set data structure.
+The first term is to store the answer.
+ */

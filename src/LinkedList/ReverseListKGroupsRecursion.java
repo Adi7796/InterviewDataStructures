@@ -24,27 +24,44 @@ public class ReverseListKGroupsRecursion {
         int k = 3;
         printList(head);
         System.out.println();
-        Node reverseHead = reverseList(head, k);
+        Node reverseHead = reverseKGroup(head, k);
         printList(reverseHead);
     }
 
-    public static Node reverseList(Node head, int k)
+    public static Node reverseKGroup(Node head, int k)
     {
-        if(head == null) return null;
-        Node temp = head;
-        Node prev = null;
+        int cnt = 0;
 
-        int x = k;
-        while(k-- > 0 && temp != null)
+        Node temp = head;
+        // check if k nodes exist in the group
+        // if not that means temp becomes null, so we return the head directly
+        // e.g : 1->2 is the group for k = 3, we directly return 1->2 without reversing anything
+        while(cnt < k)
         {
-            Node nextNode = temp.next;
-            temp.next = prev;
-            prev = temp;
-            temp = nextNode;
+            if(temp == null)
+                return head;
+
+            temp = temp.next;
+            cnt++;
         }
 
-        head.next = reverseList(temp, x);
-        return prev;
+        // recursively call for rest of LL
+        Node prevNode = reverseKGroup(temp, k);
+
+        // reverse current group
+        // normal reversing logic of LL
+        temp = head;
+        cnt = 0;
+        while(cnt < k)
+        {
+            Node nextNode = temp.next;
+            temp.next = prevNode;
+            prevNode = temp;
+            temp = nextNode;
+            cnt++;
+        }
+
+        return prevNode;
     }
 
     public static void printList(Node head)
