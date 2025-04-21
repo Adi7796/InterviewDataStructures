@@ -17,8 +17,13 @@ public class VerticalOrderTraversal {
     }
     public static void main(String[] args) {
         Node root = HeightOfBinaryTree.createBinaryTree();
-        ArrayList<Integer> ans = levelOrderTraversal(root, 0);
-        ans.forEach(System.out::println);
+        //ArrayList<Integer> ans = levelOrderTraversal(root, 0);
+        Map<Integer, ArrayList<Integer>> map = levelOrderTraversal(root);
+
+        for(Map.Entry<Integer, ArrayList<Integer>> entry : map.entrySet())
+        {
+            System.out.println(entry.getKey() + " --> " + entry.getValue());
+        }
     }
 
     /*
@@ -27,12 +32,11 @@ public class VerticalOrderTraversal {
     in the order of level order
     We are using TreeMap to sort the horizontal distance in ascending order
      */
-    public static ArrayList<Integer> levelOrderTraversal(Node root, int hd)
+    public static Map<Integer, ArrayList<Integer>> levelOrderTraversal(Node root)
     {
         Queue<Pair> queue = new LinkedList<>();
-        ArrayList<Integer> ans = new ArrayList<>();
         TreeMap<Integer, ArrayList<Integer>> map = new TreeMap<>();
-        queue.add(new Pair(root,hd));
+        queue.add(new Pair(root,0));
 
         while(!queue.isEmpty())
         {
@@ -52,11 +56,7 @@ public class VerticalOrderTraversal {
                 queue.add(new Pair(current.node.right, current.hd+ 1));
         }
 
-        for(Map.Entry<Integer, ArrayList<Integer>> entry : map.entrySet())
-        {
-            ans.addAll(entry.getValue());
-        }
-        return ans;
+        return map;
     }
 
 
