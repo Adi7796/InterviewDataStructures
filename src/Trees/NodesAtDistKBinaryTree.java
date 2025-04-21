@@ -21,7 +21,7 @@ public class NodesAtDistKBinaryTree {
         Queue<TreeNode> queue = new LinkedList<>();
 
         int mapSize = npMap.size();
-        if(mapSize +1 < k) return ans;
+        if(mapSize + 1 < k) return ans;
         boolean[] visited = new boolean[mapSize+1];
         queue.add(targetNode);
         int dist = 0;

@@ -58,8 +58,7 @@ public class RootToLeafNodePaths {
         if(root == null) return;
 
         tempList.add(root.data);
-        if(root.left == null && root.right == null)
-        {
+        if(root.left == null && root.right == null) {
             result.add(new ArrayList<>(tempList));
         }
 

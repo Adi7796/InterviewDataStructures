@@ -2,7 +2,7 @@ package Trees;
 
 import java.util.*;
 
-public class BurnATreeAnyNode {
+public class BurnATreeCPMap {
     static class Node{
         int data;
         Node left;
