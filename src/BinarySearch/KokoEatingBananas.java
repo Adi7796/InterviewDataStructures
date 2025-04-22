@@ -43,41 +43,50 @@ public class KokoEatingBananas {
         System.out.println(minEatingSpeed(piles, h));
     }
 
+    public static int findMax(int[] piles) {
+        int maxi = Integer.MIN_VALUE;;
+        int n = piles.length;
+        //find the maximum:
+        for (int i = 0; i < n; i++) {
+            maxi = Math.max(maxi, piles[i]);
+        }
+        return maxi;
+    }
+
+    public static int calculateTotalHours(int[] piles, int hourly) {
+        int totalHours = 0;
+        int n = piles.length;
+        //find total hours:
+        // Iterate over the piles and calculate hourSpent.
+        // We increase the hourSpent by ceil(piles[i] / middle)
+        for (int i = 0; i < n; i++) {
+            totalHours += Math.ceil((double)(piles[i]) / (double)(hourly));
+        }
+        return totalHours;
+    }
+
     public static int minEatingSpeed(int[] piles, int h) {
+        int low = 1, high = findMax(piles);
 
-        int left = 1, right = 1;
-        for(int pile : piles)
-        {
-            right = Math.max(right, pile);
-        }
-
-        while(left < right)
-        {
-            // Get the middle index between left and right boundary indexes.
-            // hourSpent stands for the total hour Koko spends.
-            int middle = (left + right)/2;
-
-            int hourSpent = 0;
-
-            // Iterate over the piles and calculate hourSpent.
-            // We increase the hourSpent by ceil(pile / middle)
-            for(int pile : piles)
-            {
-                hourSpent += Math.ceil((double) pile / middle);
-            }
-
+        //apply binary search:
+        while (low <= high) {
+            int mid = (low + high) / 2;
             // Check if middle is a workable speed, and cut the search space by half.
-            if(hourSpent <= h)
-            {
-                right = middle;
-            }
-            else{
-                left = middle + 1;
+            int totalHours = calculateTotalHours(piles, mid);
+            if (totalHours <= h) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
-
-        // Once the left and right boundaries coincide, we find the target value,
-        // that is, the minimum workable eating speed.
-        return right;
+        return low;
     }
 }
+
+/*
+Time Complexity: O(N * log(max(a[]))), where max(a[]) is the maximum element in the array and N = size of the array.
+Reason: We are applying Binary search for the range [1, max(a[])], and for every value of ‘mid’,
+we are traversing the entire array inside the function named calculateTotalHours().
+
+Space Complexity: O(1) as we are not using any extra space to solve this problem.
+ */

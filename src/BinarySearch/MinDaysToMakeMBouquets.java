@@ -25,7 +25,8 @@ Example 2:
 
 Input: bloomDay = [1,10,3,10,2], m = 3, k = 2
 Output: -1
-Explanation: We need 3 bouquets each has 2 flowers, that means we need 6 flowers. We only have 5 flowers so it is impossible to get the needed bouquets and we return -1.
+Explanation: We need 3 bouquets each has 2 flowers, that means we need 6 flowers. We only have 5 flowers so
+it is impossible to get the needed bouquets and we return -1.
  */
 public class MinDaysToMakeMBouquets {
 
