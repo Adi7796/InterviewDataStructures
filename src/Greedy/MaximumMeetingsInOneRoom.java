@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /*
-There is one meeting room in a firm. There are N meetings in the form of (S[i], F[i]) where S[i] is the start time of meeting i and F[i] is the finish time of meeting i.
-The task is to find the maximum number of meetings that can be accommodated in the meeting room. Print all meeting numbers
+There is one meeting room in a firm. There are N meetings in the form of (S[i], F[i])
+where S[i] is the start time of meeting i and F[i] is the finish time of meeting i.
+The task is to find the maximum number of meetings that can be accommodated in the meeting room.
+Print all meeting numbers
  */
 public class MaximumMeetingsInOneRoom {
 
@@ -24,7 +26,7 @@ public class MaximumMeetingsInOneRoom {
     public static void findMaxMeetings(ArrayList<Meeting> meeting){
         ArrayList<Integer> ans = new ArrayList<>();
 
-        // sort the list in the ascending order of the finishe times
+        // sort the list in the ascending order of the finish times
         Collections.sort(meeting, (m1, m2) -> m1.finish - m2.finish);
 
         // add the position of the first meeting

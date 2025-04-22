@@ -102,7 +102,7 @@ public class FractionalKnapsack {
                 maxValue += currItem.value;
             }
 
-            // if the remaining capacty is less than the curr wt of the curr item
+            // if the remaining capacity is less than the curr wt of the curr item
             // calculate the value by weight for a unit weight and then multiply it with the
             // remaining capacity
             // since we have used the entre capacity, we break from there
@@ -119,8 +119,8 @@ public class FractionalKnapsack {
 }
 
 /*
-Time Complexity: O(n log n + n). O(n log n) to sort the items and O(n)
-to iterate through all the items for calculating the answer.
+Time Complexity: O(n log n + n).
+O(n log n) to sort the items and O(n) to iterate through all the items for calculating the answer.
 
 Space Complexity: O(1), no additional data structure has been used.
  */

@@ -10,7 +10,7 @@ Start from the root and keep moving to the left child; if unavailable,
 move to the right child. Continue this until we reach a leaf node.
 
 Bottom Boundary: Traverse the bottom boundary of the tree by traversing the leaf nodes using a simple preorder traversal.
-We check if the current node is a lead, and if so, its value is added to the boundary traversal array.
+We check if the current node is a leaf, and if so, its value is added to the boundary traversal array.
 
 Right Boundary: The right boundary is traversed in the reverse direction, similar to the left boundary traversal
 starting from the root node and keep moving to the right child; if unavailable, move to the left child.
