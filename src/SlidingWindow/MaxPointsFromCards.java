@@ -15,7 +15,8 @@ Example 1:
 
 Input: cardPoints = [1,2,3,4,5,6,1], k = 3
 Output: 12
-Explanation: After the first step, your score will always be 1. However, choosing the rightmost card first will maximize your total score. The optimal strategy is to take the three cards on the right, giving a final score of 1 + 6 + 5 = 12.
+Explanation: After the first step, your score will always be 1. However, choosing the rightmost card first will maximize
+your total score. The optimal strategy is to take the three cards on the right, giving a final score of 1 + 6 + 5 = 12.
 Example 2:
 
 Input: cardPoints = [2,2,2], k = 2
@@ -32,8 +33,11 @@ public class MaxPointsFromCards {
     public static void main(String[] args) {
         MaxPointsFromCards obj = new MaxPointsFromCards();
 
-        int[] cardPoints = {2, 2, 2};
-        int k = 2;
+        //int[] cardPoints = {2, 2, 2};
+        //int k = 2;
+        int[] cardPoints = {1,2,3,4,5,6,1};
+        int k = 3;
+
         System.out.println(obj.maxScore(cardPoints, k));
     }
     public int maxScore(int[] cardPoints, int k) {

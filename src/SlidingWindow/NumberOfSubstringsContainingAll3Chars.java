@@ -31,7 +31,7 @@ public class NumberOfSubstringsContainingAll3Chars {
     }
     public int numberOfSubstrings(String s) {
 
-        // initialize a last seen array fpr a,b & c
+        // initialize a last seen array for a,b & c
         // this will store the last seen index values for these characters  - a,b,c
         int[] lastSeen = {-1, -1, -1};
         int count = 0;

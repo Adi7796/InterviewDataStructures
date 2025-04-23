@@ -54,6 +54,7 @@ public class BooksAllocation {
 }
 
 /*
-Time Complexity: O(N * log(sum(arr[])-max(arr[])+1)), where N = size of the array, sum(arr[]) = sum of all array elements, max(arr[]) = maximum of all array elements.
+Time Complexity: O(N * log(sum(arr[])-max(arr[])+1)), where N = size of the array, sum(arr[]) = sum of all array
+elements, max(arr[]) = maximum of all array elements.
 Space Complexity:  O(1)
  */
