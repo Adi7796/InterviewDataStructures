@@ -11,10 +11,12 @@ Examples :
 
 Input: arr[] =  [5, 2, 6, 4], d = 3
 Output: 1
-Explanation: There is only one possible partition of this array. Partition : {6, 4}, {5, 2}. The subset difference between subset sum is: (6 + 4) - (5 + 2) = 3.
+Explanation: There is only one possible partition of this array. Partition : {6, 4}, {5, 2}.
+The subset difference between subset sum is: (6 + 4) - (5 + 2) = 3.
 Input: arr[] = [1, 1, 1, 1], d = 0
 Output: 6
-Explanation: We can choose two 1's from indices {0,1}, {0,2}, {0,3}, {1,2}, {1,3}, {2,3} and put them in sum1 and remaning two 1's in sum2.
+Explanation: We can choose two 1's from indices {0,1}, {0,2}, {0,3}, {1,2}, {1,3}, {2,3} and put them in sum1
+and remaning two 1's in sum2.
 Thus there are total 6 ways for partition the array arr.
 Input: arr[] = [1, 2, 1, 0, 1, 3, 3], d = 11
 Output: 2
@@ -88,8 +90,8 @@ public class PartitionWithGivenDifference {
         // hence 2 ways
         if(nums[0] == 0) dp[0][0] = 2;
 
-            // else if index == 0 and sum == 0 but nums[0] != 0 say 5
-            // there is only one way - not take as we cannot make a sum of 5 with 0
+        // else if index == 0 and sum == 0 but nums[0] != 0 say 5
+        // there is only one way - not take as we cannot make a sum of 5 with 0
         else dp[0][0] = 1;
 
         // if nums[0] <= target say nums[0] = 5 and target = 5
