@@ -16,7 +16,7 @@ public class EditDistance {
     }
 
 
-    //Time Complexity: O(3m), when none of the characters of two strings match as shown in the image below.
+    //Time Complexity: O(3^m), when none of the characters of two strings match as shown in the image below.
     //Auxiliary Space: O(1)
     public static int findMinCostRecursion(String str1, String str2, int m, int n)
     {

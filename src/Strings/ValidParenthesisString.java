@@ -35,7 +35,8 @@ public class ValidParenthesisString {
     public static boolean checkValidString(String s) {
         // min and max are ranges of operations we can perform
         // we subtract 1 for ), add 1 for (
-        // if we convert * to ( we add 1, if we convert to ) we subtract 1, if we just keep it as empty we add 0, hence ranges vary from -1 to 1
+        // if we convert * to ( we add 1, if we convert to ) we subtract 1, if we just keep it as empty we add 0,
+        // hence ranges vary from -1 to 1
         int min = 0, max = 0;
 
         for(int i = 0; i < s.length(); i++)

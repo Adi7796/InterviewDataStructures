@@ -19,7 +19,7 @@ public class BuySellStockAtMostOneTime {
 
         for(int i=n-2; i>=0;i--)
         // creating a profit array which stores value of the highest value towards the right of the current element
-            // this value denotes the highest return you can get on the stock if sold
+        // this value denotes the highest return you can get on the stock if sold
         {
             profit[i] = Math.max(arr[i], profit[i+1]);
         }
@@ -38,7 +38,6 @@ public class BuySellStockAtMostOneTime {
 
     public static int maxProfitUsingVariable(int[] arr)
     {
-
         // Keeping track of the min value seen so far on which the stock could be bought
         int max_profit = Integer.MIN_VALUE;
         int min_so_far = Integer.MAX_VALUE;
