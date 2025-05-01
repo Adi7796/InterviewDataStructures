@@ -25,6 +25,7 @@ public class JumpingNumbers {
     {
         Queue<Integer> queue= new LinkedList<>();
 
+        // Do BFS starting from i
         queue.add(i);
 
         while(!queue.isEmpty())
@@ -35,13 +36,17 @@ public class JumpingNumbers {
                 int last_digit = num % 10;
 
                 System.out.print(num + " ");
+                // If last digit is 0, append next digit only
                 if(last_digit == 0){
                     queue.add((num*10) + (last_digit + 1));
                 }
+                // If last digit is 9, append previous digit only
                 else if(last_digit == 9)
                 {
                     queue.add((num*10) + (last_digit -1));
                 }
+                // If last digit is neither 0 nor 9, append both
+                // previous and next digits
                 else{
                     queue.add((num*10) + (last_digit -1));
                     queue.add((num*10) + (last_digit + 1));

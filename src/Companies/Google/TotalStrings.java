@@ -10,7 +10,8 @@ Your task is to find the number of strings of length ‘N’ that can be formed 
 The strings formed should be such that the number of ‘b’ and ‘c’ in the string is at most 1 and 2, respectively.
 
 Example:
-Let’s say N = 2. The strings of length 2, which satisfy the given constraints are: “aa”, “ab”, “ac”, “ba”, “bc”, “ca”, “cb”, “cc”.
+Let’s say N = 2. The strings of length 2, which satisfy the given constraints are: “aa”, “ab”, “ac”, “ba”, “bc”, “ca”,
+“cb”, “cc”.
 Hence, the output is 8.
  */
 public class TotalStrings {

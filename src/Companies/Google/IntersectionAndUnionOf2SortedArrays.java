@@ -75,21 +75,16 @@ public class IntersectionAndUnionOf2SortedArrays {
             }
         }
 
-        if(first < m)
+        while(first < m)
         {
-            while(first < m)
-            {
-                System.out.print(arr1[first]+ " ");
-                first++;
-            }
+            System.out.print(arr1[first]+ " ");
+            first++;
         }
-        if(second < n)
+
+        while(second < n)
         {
-            while(second < n)
-            {
-                System.out.print(arr2[second] + " ");
-                second++;
-            }
+            System.out.print(arr2[second] + " ");
+            second++;
         }
     }
 }
