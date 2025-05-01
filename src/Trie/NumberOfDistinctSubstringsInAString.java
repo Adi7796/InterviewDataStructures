@@ -10,7 +10,8 @@ Example 1:
 
 Input: s = "aabbaba"
 Output: 21
-Explanation: The set of distinct strings is ["a","b","aa","bb","ab","ba","aab","abb","bab","bba","aba","aabb","abba","bbab","baba","aabba","abbab","bbaba","aabbab","abbaba","aabbaba"]
+Explanation: The set of distinct strings is ["a","b","aa","bb","ab","ba","aab","abb","bab","bba","aba","aabb","abba",
+"bbab","baba","aabba","abbab","bbaba","aabbab","abbaba","aabbaba"]
 Example 2:
 
 Input: s = "abcdefg"

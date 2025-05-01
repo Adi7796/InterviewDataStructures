@@ -7,7 +7,29 @@ you need to change all ‘O’s which are present in the region to ‘X’.
 
 Note
 1. Surrounded regions shouldn’t be on the border, which means that any 'O' on the border of the matrix is not flipped to 'X'.
-2. Any ‘O’ or group of connected ‘O’ are said to be surrounded by ‘X’ when all cells touching the boundary of the group of ‘O’ must contain ‘X’.
+2. Any ‘O’ or group of connected ‘O’ are said to be surrounded by ‘X’ when all cells touching the boundary of the group
+of ‘O’ must contain ‘X’.
+
+Example 1:
+
+Input: board = [["X","X","X","X"],
+                ["X","O","O","X"],
+                ["X","X","O","X"],
+                ["X","O","X","X"]]
+
+Output: [["X","X","X","X"],
+        ["X","X","X","X"],
+        ["X","X","X","X"],
+        ["X","O","X","X"]]
+
+Explanation:
+In the above diagram, the bottom region is not captured because it is on the edge of the board and cannot be surrounded.
+
+Example 2:
+
+Input: board = [["X"]]
+
+Output: [["X"]]
  */
 public class CaptureRegion {
     static class Cell{
