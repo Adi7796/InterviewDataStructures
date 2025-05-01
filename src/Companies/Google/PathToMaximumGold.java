@@ -69,3 +69,12 @@ public class PathToMaximumGold {
         return false;
     }
 }
+
+/*
+Using Recursion – O(4^(n*m)) Time and O(n*m) Space
+Using Top-Down DP (Memoization) – O(n*m) Time and O(n*m) Space
+ if (memo[i][j] != -1) return memo[i][j];
+ .
+ .
+ return memo[i][j] = Math.max(ans, Math.max(top,Math.max(bottom, Math.max(left, right))));;
+ */
