@@ -3,7 +3,7 @@ package Companies.Amazon;
 /*
 You are given a linked list where each element in the list is a node and have an integer data.
 You need to add 1 to the number formed by concatinating all the list node numbers together and
- return the head of the modified linked list.
+return the head of the modified linked list.
 
 Note: The head represents the first element of the given array.
 
@@ -26,9 +26,9 @@ public class Add1ToLinkedList {
     }
 
     public static void main(String[] args) {
-        ListNode root1 = new ListNode(4);
-        root1.next = new ListNode(5);
-        root1.next.next = new ListNode(6);
+        ListNode root1 = new ListNode(9);
+        root1.next = new ListNode(9);
+        root1.next.next = new ListNode(9);
 
         ListNode root = addOne(root1);
         ListNode temp = root;
@@ -68,6 +68,5 @@ public class Add1ToLinkedList {
 
         temp.val = 0;
         return 1;
-
     }
 }

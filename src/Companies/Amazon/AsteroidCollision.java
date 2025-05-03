@@ -12,20 +12,17 @@ Find out the state of the asteroids after all collisions.
 If two asteroids meet, the smaller one will explode. If both are the same size, both will explode.
 Two asteroids moving in the same direction will never meet.
 
-
-
 Example 1:
-
 Input: asteroids = [5,10,-5]
 Output: [5,10]
 Explanation: The 10 and -5 collide resulting in 10. The 5 and 10 never collide.
-Example 2:
 
+Example 2:
 Input: asteroids = [8,-8]
 Output: []
 Explanation: The 8 and -8 collide exploding each other.
-Example 3:
 
+Example 3:
 Input: asteroids = [10,2,-5]
 Output: [10]
 Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.
@@ -78,9 +75,8 @@ public class AsteroidCollision {
                 // both explode but the top asteroid remains in the stack
                 if(Math.abs(currentAsteroid) < top) continue;
 
-                    // otherwise
+                // otherwise
                 else{
-
                     // loop till the top asteroid is positive since the current asteroid is negative
                     while(!stack.isEmpty() && stack.peek() > 0)
                     {
@@ -102,7 +98,7 @@ public class AsteroidCollision {
 
                         // since we have reached here the current asteroid will be destroyed,
                         // hence we wont add the current asteroid to the stack
-                        // as the top asteroid would have beed greater than the current asteroid
+                        // as the top asteroid would have been greater than the current asteroid
                         isCurrenAsteroidAdded = false;
                         break;
                     }
