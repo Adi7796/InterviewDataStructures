@@ -29,7 +29,7 @@ public class BuyAndSellStock_III {
     }
     public static int maxProfit(int[] prices) {
         int n = prices.length;
-        int[][][] dp = new int[n][2][3];
+        int[][][] dp = new int[n][2][3]; // [n][buy/sell][cap]
 
         // Initialize the dp array with -1
         // for (int i = 0; i < n; i++) {
@@ -54,13 +54,13 @@ public class BuyAndSellStock_III {
         int profit = 0;
 
         if (buy == 0) { // We can buy the stock
-            profit = Math.max(0 + getAns(Arr, n, ind + 1, 0, cap, dp),
-                    -Arr[ind] + getAns(Arr, n, ind + 1, 1, cap, dp));
+            profit = Math.max(0 + getAns(Arr, n, ind + 1, 0, cap, dp), // not take, since we did not buy, we did not change the buy flag
+                    -Arr[ind] + getAns(Arr, n, ind + 1, 1, cap, dp)); // take, since we bought we change the buy flag to 1, -Arr[] because we spend the money in buying
         }
 
         if (buy == 1) { // We can sell the stock
-            profit = Math.max(0 + getAns(Arr, n, ind + 1, 1, cap, dp),
-                    Arr[ind] + getAns(Arr, n, ind + 1, 0, cap - 1, dp));
+            profit = Math.max(0 + getAns(Arr, n, ind + 1, 1, cap, dp), // not take, cap does not get reduced
+                    Arr[ind] + getAns(Arr, n, ind + 1, 0, cap - 1, dp)); // take, cap reduces by as one buy sell transaction is completed, +Arr[] because we got the money after selling
         }
 
         // Store the calculated profit in the dp array and return it
@@ -76,7 +76,7 @@ public class BuyAndSellStock_III {
         // Loop through the dp array, starting from the second last stock (ind=n-1)
         for (int ind = n - 1; ind >= 0; ind--) {
             for (int buy = 0; buy <= 1; buy++) {
-                for (int cap = 1; cap <= 2; cap++) {
+                for (int cap = 1; cap <= 2; cap++) { // as for every cap = 0, value is 0
 
                     if (buy == 0) { // We can buy the stock
                         dp[ind][buy][cap] = Math.max(0 + dp[ind + 1][0][cap],
@@ -95,3 +95,14 @@ public class BuyAndSellStock_III {
         return dp[0][0][2];
     }
 }
+
+
+/*
+Time Complexity: O(N*2*3)
+
+Reason: There are three nested loops that account for O(N*2*3) complexity.
+
+Space Complexity: O(N*2*3)
+
+Reason: We are using an external array of size ‘N*2*3’. Stack Space is eliminated.
+ */
