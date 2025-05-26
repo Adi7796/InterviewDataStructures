@@ -57,7 +57,7 @@ public class RideSharingService {
         {
             if(driver.isAvailable()){
                 double distance = driver.getLocation().getDistance(trip.getOriginLocation());
-                if(distance <= 15.0)
+                if(distance <= 100.0)
                 {
                     isDriverFound = true;
                     System.out.println("Notifying driver: " + driver.getName() + " about ride reqst: " + trip.getId());
