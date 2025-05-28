@@ -1,0 +1,10 @@
+If we have a Parent class P
+and there are few child classes which extend from the parent class say - C1 and C2
+
+then we should be able to substitute child classes wherever we had the reference of child classes while creating a parent object
+
+Eg - Parent p = new Child1();
+
+we should be able to substitute Child2 with Child1
+
+Parent p = new Child2();
