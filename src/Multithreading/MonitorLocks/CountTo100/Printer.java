@@ -1,10 +1,11 @@
 package Multithreading.MonitorLocks.CountTo100;
 
 public class Printer {
-    private volatile boolean isOdd;
+    private volatile boolean isOddChance = true;
+    private volatile boolean isEvenChance = false;
 
     public synchronized void printOddNumber(int number){
-        while(isOdd)
+        while(isEvenChance)
         {
             try{
                 System.out.println("Waiting for Even Thread to print .. ");
@@ -15,12 +16,13 @@ public class Printer {
 
         }
         System.out.println(Thread.currentThread().getName() + " : " + number);
-        isOdd = true;
+        isEvenChance = true;
+        isOddChance = false;
         notify();
     }
 
     public synchronized void printEvenNumber(int number){
-        while(!isOdd)
+        while(isOddChance)
         {
             try{
                 System.out.println("Waiting for Odd thread to print .. ");
@@ -31,7 +33,8 @@ public class Printer {
 
         }
         System.out.println(Thread.currentThread().getName() + " : " + number);
-        isOdd = false;
+        isEvenChance = false;
+        isOddChance = true;
         notify();
     }
 }

@@ -12,16 +12,16 @@ public class TaskEvenOdd implements Runnable{
     }
     @Override
     public void run() {
-        int number = isEvenNumber ? 2:1;
-
-        while(number <= maxCount)
+        int startingNumber = isEvenNumber ? 2:1;
+        int currentNumber = startingNumber;
+        while(currentNumber <= maxCount)
         {
             if(isEvenNumber){
-                printer.printEvenNumber(number);
+                printer.printEvenNumber(currentNumber);
             }else{
-                printer.printOddNumber(number);
+                printer.printOddNumber(currentNumber);
             }
-            number = number + 2;
+            currentNumber = currentNumber + 2;
         }
     }
 }
