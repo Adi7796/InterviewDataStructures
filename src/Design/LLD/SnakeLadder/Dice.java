@@ -12,6 +12,6 @@ public class Dice {
 
     public int roll()
     {
-        return ((int)(Math.random() * 10)) % maxValue;
+        return (int)(Math.random() * (maxValue - minValue + 1)) + minValue;
     }
 }
