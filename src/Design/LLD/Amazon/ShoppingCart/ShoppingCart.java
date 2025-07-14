@@ -7,10 +7,10 @@ import java.util.List;
 
 public class ShoppingCart {
     private double totalPrice;
-    private List<Product> productsList;
+    private List<CartItem> cartItemList;
 
-    public boolean addItem(Product product) { return true; }
-    public boolean removeItem(Product product) { return true; }
+    public boolean addItem(CartItem cartItem) { return true; }
+    public boolean removeItem(CartItem cartItem) { return true; }
     public List<Product> getProductsList() { return new ArrayList<>(); }
     public boolean checkout() { return true; }
 }
