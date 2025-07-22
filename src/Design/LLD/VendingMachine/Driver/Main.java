@@ -12,7 +12,7 @@ public class Main {
             System.out.println("|");
 
             Inventory inventory = vendingMachine.getInventory();
-            inventory.addProductsToEmptyInventory(inventory.getShelfCapacity());
+            //inventory.addProductsToEmptyInventory(inventory.getShelfCapacity());
 
             inventory.displayInventory();
 
@@ -20,17 +20,14 @@ public class Main {
             System.out.println("Inserting Coins");
             System.out.println("|");
 
-            State vendingMachineState = vendingMachine.getCurrentVendingMachineState();
-
-            vendingMachineState.insertCoin(vendingMachine, Coin.TEN);
+            vendingMachine.getCurrentVendingMachineState().insertCoin(vendingMachine, Coin.TEN);
             System.out.println("|");
-            vendingMachineState.insertCoin(vendingMachine, Coin.FIVE);
-            vendingMachineState.insertCoin(vendingMachine, Coin.TEN);
+            vendingMachine.getCurrentVendingMachineState().insertCoin(vendingMachine, Coin.FIVE);
+            System.out.println("|");
+            vendingMachine.getCurrentVendingMachineState().insertCoin(vendingMachine, Coin.TEN);
             System.out.println("|");
             System.out.println("Current Coins List : "+ vendingMachine.getCoinList());
             System.out.println("|");
-
-            System.out.println(vendingMachine.getCurrentVendingMachineState().getClass());
 
             vendingMachine.getCurrentVendingMachineState().startProductSelection(vendingMachine);
             System.out.println("|");
