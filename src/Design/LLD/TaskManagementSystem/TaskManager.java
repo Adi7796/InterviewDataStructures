@@ -16,7 +16,6 @@ public class TaskManager {
     {
         taskMap = new ConcurrentHashMap<>();
         userTasksMap = new ConcurrentHashMap<>();
-
     }
     public static synchronized TaskManager getTaskManagerInstance(){
         if(instance == null)
@@ -25,7 +24,6 @@ public class TaskManager {
         }
         return instance;
     }
-
 
     public void createTask(Task task)
     {

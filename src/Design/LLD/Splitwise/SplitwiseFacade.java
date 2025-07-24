@@ -27,23 +27,23 @@ public class SplitwiseFacade {
     public Expense addEqualExpense(Double totalAmount, List<User> participants)
     {
         ExpenseFactory equalExpenseFactory = new EqualExpenseFactory();
-        Expense expense = equalExpenseFactory.createExpense(participants, totalAmount);
+        Expense equalExpense = equalExpenseFactory.createExpense(participants, totalAmount);
 
-        expense.calculateShares();
-        expensesList.add(expense);
+        equalExpense.calculateShares();
+        expensesList.add(equalExpense);
 
-        return expense;
+        return equalExpense;
     }
 
     public Expense addUnequalExpense(Double totalAmount, List<User> participants)
     {
         ExpenseFactory unequalExpenseFactory = new UnequalExpenseFactory();
-        Expense expense = unequalExpenseFactory.createExpense(participants, totalAmount);
+        Expense unequalExpense = unequalExpenseFactory.createExpense(participants, totalAmount);
 
-        expense.calculateShares();
-        expensesList.add(expense);
+        unequalExpense.calculateShares();
+        expensesList.add(unequalExpense);
 
-        return expense;
+        return unequalExpense;
     }
 
     public void notifyObservers()
