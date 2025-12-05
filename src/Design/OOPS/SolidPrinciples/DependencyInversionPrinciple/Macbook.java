@@ -21,8 +21,8 @@ public class Macbook {
 
     public Macbook(Keyboard keyboard, Mouse mouse)
     {
-        this.keyboard = new WiredKeyboard();
-        this.mouse = new WiredMouse();
+        this.keyboard = keyboard;
+        this.mouse = mouse;
     }
      */
 }
