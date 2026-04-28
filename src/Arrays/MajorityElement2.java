@@ -32,15 +32,16 @@ and so on.
  */
 
     public static void main(String[] args) {
-        int[] nums = {3,2,3};
-        majorityElement(nums);
+        int[] nums = {2, 2, 3, 1, 3, 2, 1, 1};
+        List<Integer> majorityElements = majorityElement(nums);
+        majorityElements.forEach(System.out::println);
     }
     public static List<Integer> majorityElement(int[] nums) {
         List<Integer> ans = new ArrayList<>();
         int n = nums.length;
 
-        int count1 = 0; int element1 = 0;
-        int count2 = 0; int element2 = 0;
+        int count1 = 0; int element1 = -1;
+        int count2 = 0; int element2 = -1;
 
         for(int i = 0; i<nums.length; i++)
         {
