@@ -82,7 +82,9 @@ public class LongestSubArrayWithSumK {
             }
 
             // if the prefix sum already exists, we dont update the index
-            // this is to handle 0 condition
+            // this is to handle 0 condition like - [2, 0, 0, 3]  k= 3 -> max len should be 3 - 0,0 3
+            // if we dont add the below condition, the max len will come to be 1 - [3] as
+            // the index for 2 in the map will keep getting replaced when adding 0 to the prefix sum
             if(!prefixSumMap.containsKey(prefixSum))
             {
                 prefixSumMap.put(prefixSum, i);
