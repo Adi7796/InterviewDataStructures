@@ -33,10 +33,9 @@ public class CombinationSum1 {
     public static void findNumbers(ArrayList<ArrayList<Integer>> ans,
                                    ArrayList<Integer> arr, int index, int sum, ArrayList<Integer> temp)
     {
-        if(index == arr.size()){
-            if(sum ==0){
-                ans.add(new ArrayList<>(temp));
-            }
+        if(index == arr.size()) return;
+        if(sum == 0){
+            ans.add(new ArrayList<>(temp));
             return;
         }
         // checking that sum does not become negative
