@@ -32,11 +32,11 @@ public class MedianOf2SortedArrays {
         if(n1 > n2)
             return findMedianSortedArrays(nums2, nums1);
 
-        return findMedianBinaySearch(nums1, nums2);
+        return findMedianBinarySearch(nums1, nums2);
 
     }
 
-    private static double findMedianBinaySearch(int[] nums1, int[] nums2)
+    private static double findMedianBinarySearch(int[] nums1, int[] nums2)
     {
         int n1 = nums1.length;
         int n2 = nums2.length;

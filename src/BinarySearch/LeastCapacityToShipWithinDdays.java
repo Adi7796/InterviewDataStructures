@@ -51,14 +51,14 @@ public class LeastCapacityToShipWithinDdays {
 
     public static int shipWithinDays(int[] weights, int days) {
         int sum = 0;
-        int min = Integer.MAX_VALUE;
+        int max = Integer.MAX_VALUE;
         for(int i : weights)
         {
             sum += i;
-            min = Math.min(min, i);
+            max = Math.max(max, i);
         }
 
-        int low = min, high = sum;
+        int low = max, high = sum;
         int ans = -1;
         while(low <= high)
         {
