@@ -19,6 +19,13 @@ public class FrogJump {
     public static void main(String[] args) {
         int[] height = {20, 30, 40, 20};
         System.out.println(minCost(height));
+
+//        Below code for countEnergy
+//        if(height.length == 0) return 0;
+//        int n = height.length;
+//        int[] dp = new int[n];
+//        Arrays.fill(dp, 0);
+//        return countEnergy(height, dp);
     }
     static int minCost(int[] height)
     {
@@ -42,5 +49,21 @@ public class FrogJump {
                 recurse(height, index - 2, dp) + Math.abs(height[index] - height[index-2])
         );
 
+    }
+
+    private int countEnergy(int[] ht, int[] dp)
+    {
+        int n = ht.length;
+        dp[0] = 0;
+        for(int i = 1; i < ht.length; i++)
+        {
+            int prev_2 = Integer.MAX_VALUE;
+            int prev_1 = dp[i-1] + Math.abs(ht[i] - ht[i - 1]);
+            if(i > 1) {
+                prev_2 = dp[i-2] + Math.abs(ht[i] - ht[i - 2]);
+            }
+            dp[i] = Math.min(prev_1, prev_2);
+        }
+        return dp[n-1];
     }
 }
