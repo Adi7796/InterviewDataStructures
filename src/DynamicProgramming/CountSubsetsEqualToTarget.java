@@ -31,40 +31,28 @@ public class CountSubsetsEqualToTarget {
     }
     public static int perfectSum(int[] nums, int target) {
         // code here
-        int[][] dp = new int[nums.length][target+1];
-        for(int[] row : dp)
+        int[][] dp = new int[nums.length][target + 1];
+        for(int i = 0; i<nums.length; i++)
         {
-            Arrays.fill(row, -1);
+            Arrays.fill(dp[i], -1);
         }
-        return countSubsets(nums.length-1, nums, target, dp);
+        return recurse(nums, target, 0, nums.length, dp);
     }
 
-    private static int countSubsets(int index, int[] nums, int target, int[][] dp)
+
+    private static int recurse(int[] nums, int target, int ind, int len, int[][] dp)
     {
-        // if the index becomes 0, that's our base case
-        if (index == 0) {
-            // if target becomes 0 and the 0th index in 0
-            // we can both take and not take this 0 as removing the 0 from the target
-            // and not removing the 0 from the target will not alter the target
-            // hence we have 2 options
-            if (target == 0 && nums[0] == 0) return 2;
-
-            // if the target is 0 and nums[0] = 5, we can not take the last index - hence 1 option
-            // or if the target is equal to nums[0] say 5, we need to take this index - hence 1 option
-            if(target == 0 || target == nums[0]) return 1;
-
-            // in all other cases we will not pick this index
-            return 0;
+        if(ind == len){
+            return target == 0 ? 1:0; // Meaning: "I've processed all elements. If I've achieved the target, this is one valid subset."
         }
 
-        if(dp[index][target] != -1) return dp[index][target];
-        int notTake = countSubsets(index-1, nums, target, dp);
-        int take = 0;
-        if(nums[index] <= target)
-        {
-            take = countSubsets(index-1, nums, target - nums[index], dp);
+        if(dp[ind][target] != -1) return dp[ind][target];
+        int notPick = recurse(nums, target, ind + 1, len, dp);
+        int pick = 0;
+        if(nums[ind] <= target){
+            pick = recurse(nums, target - nums[ind], ind + 1, len, dp);
         }
 
-        return dp[index][target] = take + notTake;
+        return dp[ind][target] = pick + notPick;
     }
 }
