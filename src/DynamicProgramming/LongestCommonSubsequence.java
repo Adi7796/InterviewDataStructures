@@ -36,6 +36,25 @@ public class LongestCommonSubsequence {
         return dp[n][m];
     }
 
+    private static int recurse(String s1, String s2, int i, int j, int m, int n)
+    {
+        if(i >=m || j >= n) return 0;
+        if(s1.charAt(i) == s2.charAt(j)) return 1 + recurse(s1, s2, i+1, j+1, m, n);
+
+        return Math.max(recurse(s1, s2, i+1, j, m, n)
+                , recurse(s1, s2, i, j+1, m, n));
+    }
+
+    private static int memoization(String s1, String s2, int i, int j, int m, int n, int[][] dp)
+    {
+        if(i >=m || j >= n) return 0;
+        if(dp[i][j] != -1) return dp[i][j];
+        if(s1.charAt(i) == s2.charAt(j)) return 1 + memoization(s1, s2, i+1, j+1, m, n, dp);
+
+        return dp[i][j] = Math.max(memoization(s1, s2, i+1, j, m, n, dp)
+                , memoization(s1, s2, i, j+1, m, n, dp));
+    }
+
     // leet code implementation
     public int longestCommonSubsequence(String s1, String s2) {
         int n = s1.length();

@@ -31,4 +31,30 @@ public class HouseRobber {
 
         System.out.println("Max value : " + Math.max(excluding[n-1], including[n-1]));
     }
+
+//    this code is similar to finding maximum sum of non adjacent elements
+//    public int findMaxSum(int arr[]) {
+//        // code here
+//        if(arr.length == 0) return 0;
+//
+//        int n = arr.length;
+//        int[] dp = new int[n];
+//        Arrays.fill(dp, -1);
+//        return findSum(arr, arr.length-1, dp);
+//
+//    }
+//
+//
+//    private int findSum(int[] arr, int i, int[] dp)
+//    {
+//        if(i == 0) return arr[0];
+//        if(i == 1) return Math.max(arr[0], arr[1]);
+//
+//        if(dp[i] != -1) return dp[i];
+//
+//        int currPick = arr[i] + findSum(arr, i-2, dp);
+//        int currNotPick = findSum(arr, i-1, dp);
+//
+//        return dp[i] = Math.max(currPick, currNotPick);
+//    }
 }
