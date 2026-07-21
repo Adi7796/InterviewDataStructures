@@ -2,7 +2,7 @@ package Graphs;
 
 import java.util.LinkedList;
 
-public class DetectCycleUndirectedGraph {
+public class DetectCycleUndirectedGraphDFS {
     public static void main(String[] args){
         int v=7;
         LinkedList<LinkedList<Integer>> adjacencyList = new LinkedList<>();
