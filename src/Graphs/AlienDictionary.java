@@ -1,9 +1,6 @@
 package Graphs;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /*
 There is a new alien language that uses the English alphabet.
@@ -41,95 +38,108 @@ public class AlienDictionary {
         String[] words = {"wrt","wrf","er","ett","rftt"};
         AlienDictionary obj = new AlienDictionary();
 
-        System.out.println(obj.alienOrder(words));
+        System.out.println(obj.findOrder(words));
     }
 
-    public String alienOrder(String[] words) {
-
-        // Need this map to keep track of all the neighbour chars of each char
-        HashMap<Character, HashSet<Character>> graph = new HashMap<>();
-        // to keep track of the indegree's of all the chars
-        HashMap<Character, Integer> inDegreeMap = new HashMap<>();
-
-        for(int i = 0; i<words.length; i++)
+    public String findOrder(String[] words) {
+        // code here
+        Set<Integer> charSet = new HashSet<>();
+        for(String s : words)
         {
-            String s = words[i];
-            for(char ch : s.toCharArray())
+            for(int i=0; i<s.length(); i++)
             {
-                inDegreeMap.put(ch, 0);
+                charSet.add(s.charAt(i)-'a');
             }
         }
 
-        for(int i = 0; i<words.length-1; i++)
+        int V = charSet.size();
+        ArrayList<ArrayList<Integer>> graph = constructGraph(words);
+        if(graph.isEmpty()) return "";
+        return topoSort(graph, V, charSet);
+    }
+
+    private static ArrayList<ArrayList<Integer>> constructGraph(String[] words)
+    {
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for(int i=0; i<26; i++)
+        {
+            graph.add(new ArrayList<>());
+        }
+
+        for(int i=0; i<words.length-1; i++)
         {
             String s1 = words[i];
             String s2 = words[i+1];
-
-            // edge case when no ordering is possible
-            // when the word occurring before is greater in length than the 2nd word
-            // and the 2nd word is a prefix of the first word, eg - abcd & abc
-            if(s1.length() > s2.length() && s1.startsWith(s2)) return "";
-
+            /*
+            to take care of a corner case where in s1 - abcd and s2 - abc
+            in that case abc match in s1 and s2 but we dont have d to match to anything in s1
+             */
+            if(s1.length() > s2.length() && s1.startsWith(s2)) return new ArrayList<>();
             int len = Math.min(s1.length(), s2.length());
-            for(int j = 0; j<len; j++)
+            for(int j=0; j<len; j++)
             {
-                char c1 = s1.charAt(j);
-                char c2 = s2.charAt(j);
-                // place of first mismatch of characters
-                if(c1 != c2)
+                if(s1.charAt(j) != s2.charAt(j)) // whenever there is a mismatch we add the nodes to the graph and break
                 {
-                    HashSet<Character> set = new HashSet<>();
-                    if(graph.containsKey(c1) == true)
-                    {
-                        set = graph.get(c1);
-                        if(!set.contains(c2))
-                        {
-                            set.add(c2);
-                            inDegreeMap.put(c2, inDegreeMap.get(c2) + 1);
-                        }
-                    }
-                    else
-                    {
-                        set.add(c2);
-                        inDegreeMap.put(c2, inDegreeMap.get(c2) + 1);
-                    }
-                    graph.put(c1, set);
+                    // nodes are stores as int vertices and not char hence we use the conversion
+                    addEdge(graph, s1.charAt(j) -'a', s2.charAt(j) -'a');
                     break;
                 }
             }
         }
 
-        return topoSort(graph, inDegreeMap);
+        return graph;
     }
 
-    String topoSort(HashMap<Character, HashSet<Character>> graph, HashMap<Character, Integer> inDegreeMap) {
-        Queue<Character> queue = new LinkedList<>();
-        for (char ch : inDegreeMap.keySet()) {
-            if (inDegreeMap.get(ch) == 0)
-                queue.add(ch);
+    private static void addEdge(ArrayList<ArrayList<Integer>> graph, int u, int v)
+    {
+        graph.get(u).add(v);
+    }
+
+    private static String topoSort(ArrayList<ArrayList<Integer>> graph, int V, Set<Integer> charSet)
+    {
+        char[] order = new char[V];
+        int[] inDegree = new int[26];
+        Queue<Integer> q = new LinkedList<>();
+
+        // prepare indegree arr for the connected chars in the form of int vertices - 0,1,2,3.. 26
+        for(ArrayList<Integer> list : graph)
+        {
+            for(int i : list)
+            {
+                inDegree[i]++;
+            }
         }
 
-        StringBuilder sb = new StringBuilder();
-        int count = 0;
-        while (!queue.isEmpty()) {
-            char ch = queue.remove();
-            sb.append(ch);
-            count++;
-            if (graph.containsKey(ch)) {
-                // get the neighbour set of the current char
-                HashSet<Character> nbrSet = graph.get(ch);
-                // traverse over all the neighbour char and decrement their in degree
-                for (char nbr : nbrSet) {
-                    inDegreeMap.put(nbr, inDegreeMap.get(nbr) - 1);
-                    // enqueue if any char has indegree = 0
-                    if (inDegreeMap.get(nbr) == 0) {
-                        queue.add(nbr);
-                    }
+        for(int i=0; i<inDegree.length; i++)
+        {
+            // we check only for those vertices which are present in the chatSet and not all 26 chars
+            if(charSet.contains(i) && inDegree[i] == 0){
+                q.offer(i);
+            }
+        }
+
+        int cnt = 0;
+        // apply normal topo sort using kahn's algo
+        while(!q.isEmpty())
+        {
+            int v = q.poll();
+            order[cnt] = (char)(97 + v);
+            cnt++;
+            for(int i: graph.get(v))
+            {
+                if(charSet.contains(i) && --inDegree[i] == 0)
+                {
+                    q.add(i);
                 }
             }
-
         }
-        return inDegreeMap.size() > sb.length() ? "" : sb.toString();
+        if(cnt != V) return ""; // to check for cycles
+        StringBuffer sb = new StringBuffer("");
+        for(char ch : order)
+        {
+            sb.append(ch);
+        }
+        return sb.toString();
     }
 }
 

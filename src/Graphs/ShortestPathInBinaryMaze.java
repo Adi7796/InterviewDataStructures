@@ -89,6 +89,7 @@ public class ShortestPathInBinaryMaze {
                 // if valid, create a new node for the neighbour and add to the initial queue
                 // use the direction arrays ROW and COL to go in 4 directions to check for immediate neighbours
                 if(isValid(matrix, curRow + ROW[k], curCol + COL[k], rowLength, colLength, visited)){
+                    visited[curRow + ROW[k]][curCol + COL[k]] = true;
                     QueueNode newNode = new QueueNode(new Node(curRow + ROW[k], curCol + COL[k]), cell.dist+1);
                     queue.add(newNode);
                 }
