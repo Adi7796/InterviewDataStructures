@@ -1,4 +1,4 @@
-package Graphs;
+package Graphs.DisjointSet;
 
 /*
 There are n computers numbered from 0 to n - 1 connected by ethernet cables

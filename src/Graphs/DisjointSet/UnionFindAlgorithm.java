@@ -1,6 +1,4 @@
-package Graphs;
-
-import java.util.List;
+package Graphs.DisjointSet;
 
 /*
 https://www.scaler.com/topics/data-structures/disjoint-set/
@@ -11,6 +9,8 @@ public class UnionFindAlgorithm {
     static int[] parent;
     static int[] rank;
 
+    static int[] size;
+
     public UnionFindAlgorithm()
     {
         parent = new int[V];
@@ -19,6 +19,7 @@ public class UnionFindAlgorithm {
         {
             parent[i] = i;
             rank[i] = 0;
+            size[i] = 1;
         }
     }
 
@@ -40,6 +41,7 @@ public class UnionFindAlgorithm {
         System.out.println("Parent : " + findByPathCompression(7));
     }
 
+    /* time complexity = O(logn) */
     public static int find(int u)
     {
         if(parent[u] == u){
@@ -68,6 +70,7 @@ public class UnionFindAlgorithm {
     its time complexity to be O(n).
      */
 
+    /* time complexity = O(4a) */
     public static int findByPathCompression(int u)
     {
         if(parent[u] == u)
@@ -77,11 +80,13 @@ public class UnionFindAlgorithm {
         return parent[u] = findByPathCompression(parent[u]);
     }
 
-    /* time complexity = O(logn) */
+    /* time complexity = O(4a) */
     public static void unionByRank(int u, int v)
     {
         int root_u = findByPathCompression(u);
         int root_v = findByPathCompression(v);
+        if(u == v) return;
+        if(root_u == root_v) return;
 
         if(rank[root_v] > rank[root_u])
         {
@@ -97,5 +102,22 @@ public class UnionFindAlgorithm {
             rank[root_u]++;
         }
     }
-    /* time complexity = O(logn) */
+
+    private static void unionBySize(int u, int v)
+    {
+        int root_u = find(u);
+        int root_v = find(v);
+        if(u == v) return;
+        if(root_u == root_v) return;
+
+        if(size[root_v] > size[root_u])
+        {
+            parent[root_u] = root_v;
+            size[root_v] += size[root_u];
+        }
+        else{
+            parent[root_v] = root_u;
+            size[root_u] += size[root_v];
+        }
+    }
 }
