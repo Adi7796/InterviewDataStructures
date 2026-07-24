@@ -11,17 +11,15 @@ public class IdenticalTrees {
         }
     }
 
-    public static boolean isIdentical(Node root1, Node root2)
+    public static boolean isIdentical(Node r1, Node r2)
     {
-        if(root1 == null && root2 == null)
-            return true;
-        if(root1!=null && root2!=null)
-        {
-            return (root1.data == root2.data
-            && isIdentical(root1.left, root2.left)
-            && isIdentical(root1.right, root2.right));
-        }
-        return false;
+        if((r1 == null && r2 != null) || r1 != null && r2 == null) return false;
+        if(r1 == null && r2 == null)  return true;
+
+        boolean checkLeft = isIdentical(r1.left, r2.left);
+        boolean checkRight = isIdentical(r1.right, r2.right);
+
+        return r1.data == r2.data && checkLeft && checkRight;
     }
 
     public static boolean isIdenticalAlternative(Node p, Node q)
