@@ -20,6 +20,8 @@ public class FloorAndCeilBST {
 
         System.out.println("Floor value :" + floorValue(root, 22) );
         System.out.println("Ceil Value :" + ceilValue(root, 22));
+        System.out.println("Ceil Value with recursion:" + ceilRecursion(root, 22, -1));
+        System.out.println("Floor Value with recursion:" + floorRecursion(root, 22, -1));
     }
 
     public static Integer floorValue(Node root, int key)
@@ -61,5 +63,24 @@ public class FloorAndCeilBST {
             }
         }
         return ans;
+    }
+    private static int ceilRecursion(Node root, int key, int ans)
+    {
+        if(root == null) return ans;
+        if(root.data == key) return key;
+
+        if(root.data < key) return ceilRecursion(root.right, key, ans);
+
+        return ceilRecursion(root.left, key, root.data);
+    }
+
+    private static int floorRecursion(Node root, int key, int ans)
+    {
+        if(root == null) return ans;
+        if(root.data == key) return key;
+
+        if(root.data < key) return floorRecursion(root.right, key, root.data);
+
+        return floorRecursion(root.left, key, ans);
     }
 }
